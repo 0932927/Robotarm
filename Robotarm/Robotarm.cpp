@@ -22,14 +22,13 @@ void Robotarm::HerstelServos()// om de arm naar de standaard posities terug te z
 }
 
 //float X2 = 10.0;
-//float Y2 = 10.0;
-void Robotarm::BerekenAantalGraden(float X2,float Y2)
+//float Y = 10.0;
+void Robotarm::BerekenAantalGraden(float X,float Y)
 {
 	phi = 180.0;
 	degToRad(phi); // zelf gedefinieerd in robotarm.h
-	int wx = X2 - Arm_3*cos(phi);
-	int wy = Y2 - Arm_3*sin(phi);
-	
+	int wx = X - Arm_3*cos(phi);
+	int wy = Y - Arm_3*sin(phi);
 	float delta = (wx*wx)+ (wy*wy);
 	float c2 = (delta - (Arm_1*Arm_1) - (Arm_2*Arm_2))/(2 * Arm_1 * Arm_2);
 	float s2 = sqrt(1 - (c2*c2));
@@ -38,9 +37,9 @@ void Robotarm::BerekenAantalGraden(float X2,float Y2)
 	float c1 = ((Arm_1+Arm_2*c2)*wx + Arm_2*s2*wy)/delta;
 	float theta_1 = atan2(s1,c1);
 	float theta_3 = phi-theta_1-theta_2;
-	float Hoek1 = theta_1;
-	float Hoek2 = theta_2;
-	float Hoek3 = theta_3;
+	Hoek1 = theta_1;
+	Hoek2 = theta_2;
+	Hoek3 = theta_3;
 }
 
 void Robotarm::CoordinatenBepalen(int Getal)

@@ -28,7 +28,7 @@ class Robotarm {
         void AlsGroterDan(uint8_t, uint8_t);
         void AlsKleinerDan(uint8_t, uint8_t);
 		void HerstelServos();
-		float X2, Y2, Z2; // Dot zijn de eind posities
+		float X, Y, Z; // Dot zijn de eind posities
 		int Getal;
 		float Hoek1, Hoek2, Hoek3;
     private:
@@ -42,7 +42,6 @@ class Robotarm {
 		float radians;
 		float degrees;
 		float phi;
-		float X1, Y1, Z1 = 0.0; //Dit zijn de begin posities
 		
         VarSpeedServo Motor1;
         VarSpeedServo Motor2;

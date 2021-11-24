@@ -1,5 +1,4 @@
 #include <Robotarm.h>
-
 Robotarm arm;
 
 
@@ -11,9 +10,9 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   arm.HerstelServos();// Zet de arm terug naar de oorspronkelijke positie
   delay(2000);
   
-  arm.X2  = 10.0;
-  arm.Y2  = 15.0;
-  arm.BerekenAantalGraden(arm.X2, arm.Y2);
+  arm.X  = 10.0;
+  arm.Y  = 15.0;
+  arm.BerekenAantalGraden(arm.X, arm.Y);
   Serial.print("Hoek 1: ");
   Serial.print(arm.Hoek1);
   Serial.print(" Hoek 2: ");
