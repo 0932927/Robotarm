@@ -42,7 +42,8 @@ void Robotarm::BerekenAantalGraden(float X,float Y)
 	Hoek3 = theta_3;
 }
 
-void Robotarm::CoordinatenBepalen(int Getal)
+//
+void Robotarm::vastePositie(int Getal)
 {
 	if (Getal == 1)
 	{
@@ -69,6 +70,7 @@ void Robotarm::CoordinatenBepalen(int Getal)
 		//BerekenAantalGraden(float, float)
 	}
 }	
+
 void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeven worden, eerst alleen x en y
 {
 	//Motor1.write();
@@ -94,7 +96,7 @@ void Robotarm::DraaiMotor1(uint8_t aantalgraden)
 
 void Robotarm::DraaiMotor2(int aantalgraden) 
 {
-    Motor2.write(aantalgraden, 30, true);
+    Motor2.write(mirrorM(aantalgraden), 30, true);
 }
 
 void Robotarm::DraaiMotor3(uint8_t aantalgraden) 
@@ -123,6 +125,22 @@ void Robotarm::AlsGroterDan(uint8_t a, uint8_t b)
 void Robotarm::AlsKleinerDan(uint8_t a, uint8_t b) 
 {
 
+}
+
+void Robotarm::mirrorM(float hoek){
+	//als de hoek kleiner is dan 90 moet de mirror groter zijn dan 90
+	//de mirror van 89 is 91. 
+	//wanneer de hoek dus kleiner is moet het verschil tot 90 bij 90 worden opgeteld
+	if (hoek < 90.0) 
+	{ 
+		diff = 90.0 - hoek;
+		hoek = 90.0 + diff;
+	} else {
+		diff = hoek - 90.0;
+		hoek = 90.0 - diff;
+	}
+	return hoek;
+	
 }
 
 //hallo testsouf

@@ -15,7 +15,7 @@
 class Robotarm {
     public:
         void attach(); // Dit moet aangeroepen worden in void setup()
-		void CoordinatenBepalen(int);// hier komt het getal (1 of 2 of 3 ..ect) dan wordt bepaald welke x,y,z
+		void vastePositie(int);// hier komt het getal (1 of 2 of 3 ..ect) dan wordt bepaald welke x,y,z
         void GaNaar(uint8_t, uint8_t);// Deze krijgen we van de Arduino sketch, we beginnen eerst met x en y
 		void BerekenAantalGraden(float, float);// De gekregen coordinaten in deze functie meegeven om de hoeken te bepalen
         //void DraaiOnderkant(uint8_t);
@@ -28,6 +28,7 @@ class Robotarm {
         void AlsGroterDan(uint8_t, uint8_t);
         void AlsKleinerDan(uint8_t, uint8_t);
 		void HerstelServos();
+		void mirrorM(float);
 		float X, Y, Z; // Dot zijn de eind posities
 		int Getal;
 		float Hoek1, Hoek2, Hoek3;
@@ -42,6 +43,7 @@ class Robotarm {
 		float radians;
 		float degrees;
 		float phi;
+		float diff;
 		
         VarSpeedServo Motor1;
         VarSpeedServo Motor2;
