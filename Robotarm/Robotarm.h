@@ -28,21 +28,22 @@ class Robotarm {
         void AlsGroterDan(uint8_t, uint8_t);
         void AlsKleinerDan(uint8_t, uint8_t);
 		void HerstelServos();
-		void mirrorM(float);
+		float mirrorM(float);
 		float X, Y, Z; // Dot zijn de eind posities
 		int Getal;
-		float Hoek1, Hoek2, Hoek3;
+		float Hoek1 =1, Hoek2=2, Hoek3=3;
+		float wx, wy, delta, theta_1, theta_2, theta_3, c1, c2, s1, s2;
+		float phi;
     private:
 		int pin_Motor1 = 2;// Dig.pin  we beginnen bij 2 omdat 0 en 1 ook TX en RX zij voor UART. De servo krijgt telkens een schok voor dat de beweging wordt uitgevoerd
 		int pin_Motor2 = 3;//Dig pin 3
 		int pin_Motor3 = 4;//Dig pin 4
 		int pin_Motor4 = 5;//Dig pin 5
-		float Arm_1 = 15.0; // lengte in cm
-		float Arm_2 = 12.5;
-		float Arm_3 = 8.0;
+		float Arm_1 = 12.2; // 5.2; // lengte in cm
+		float Arm_2 = 12.5; // 6.9;
+		float Arm_3 = 8.0; // 6.8;
 		float radians;
 		float degrees;
-		float phi;
 		float diff;
 		
         VarSpeedServo Motor1;

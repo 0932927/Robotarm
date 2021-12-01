@@ -13,33 +13,35 @@ void Robotarm::HerstelServos()// om de arm naar de standaard posities terug te z
 {
 	Motor1.write(90, 30, true);// misschien is het niet nodig voor motor 1 omdat deze de base motor is
 	delay(1000);
-	Motor2.write(10, 30, true);
+	Motor2.write(90, 30, true);
 	delay(500);
-	Motor3.write(45, 40, true);
+	Motor3.write(90, 40, true);
 	delay(500);
-	Motor4.write(45, 40, true);
+	Motor4.write(90, 40, true);
 	delay(500);
 }
 
-//float X2 = 10.0;
-//float Y = 10.0;
 void Robotarm::BerekenAantalGraden(float X,float Y)
 {
 	phi = 180.0;
-	degToRad(phi); // zelf gedefinieerd in robotarm.h
-	int wx = X - Arm_3*cos(phi);
-	int wy = Y - Arm_3*sin(phi);
-	float delta = (wx*wx)+ (wy*wy);
-	float c2 = (delta - (Arm_1*Arm_1) - (Arm_2*Arm_2))/(2 * Arm_1 * Arm_2);
-	float s2 = sqrt(1 - (c2*c2));
-	float theta_2 = atan2(s2, c2);
-	float s1 = ((Arm_1+Arm_2*c2)*wy - Arm_2*s2*wx)/delta;
-	float c1 = ((Arm_1+Arm_2*c2)*wx + Arm_2*s2*wy)/delta;
-	float theta_1 = atan2(s1,c1);
-	float theta_3 = phi-theta_1-theta_2;
-	Hoek1 = theta_1;
-	Hoek2 = theta_2;
-	Hoek3 = theta_3;
+	phi = degToRad(phi); // zelf gedefinieerd in robotarm.h
+
+	wx = X - Arm_3*cos(phi);
+	wy = Y - Arm_3*sin(phi);
+
+	delta = pow(wx, 2)+ pow(wy, 2);
+	c2 = (delta - pow(Arm_1, 2) - pow(Arm_2, 2))/(2 * Arm_1 * Arm_2);
+	s2 = sqrt(1 - pow(c2,2));
+	theta_2 = atan2(s2, c2);
+
+	s1 = ((Arm_1+Arm_2*c2)*wy - Arm_2*s2*wx)/delta;
+	c1 = ((Arm_1+Arm_2*c2)*wx + Arm_2*s2*wy)/delta;
+	theta_1 = atan2(s1,c1);
+	theta_3 = phi-theta_1-theta_2;
+
+	Hoek1 = radToDeg(theta_1)+90;
+	Hoek2 = radToDeg(theta_2);
+	Hoek3 = radToDeg(theta_3);
 }
 
 //
@@ -95,8 +97,9 @@ void Robotarm::DraaiMotor1(uint8_t aantalgraden)
 }
 
 void Robotarm::DraaiMotor2(int aantalgraden) 
-{
-    Motor2.write(mirrorM(aantalgraden), 30, true);
+{		
+	aantalgraden = mirrorM(aantalgraden);
+    Motor2.write(aantalgraden, 30, true);
 }
 
 void Robotarm::DraaiMotor3(uint8_t aantalgraden) 
@@ -127,7 +130,7 @@ void Robotarm::AlsKleinerDan(uint8_t a, uint8_t b)
 
 }
 
-void Robotarm::mirrorM(float hoek){
+float Robotarm::mirrorM(float hoek){
 	//als de hoek kleiner is dan 90 moet de mirror groter zijn dan 90
 	//de mirror van 89 is 91. 
 	//wanneer de hoek dus kleiner is moet het verschil tot 90 bij 90 worden opgeteld

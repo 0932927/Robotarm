@@ -8,17 +8,22 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   //Serial.setTimeout(3);// 1000 ms is 1 s
   arm.attach();
   arm.HerstelServos();// Zet de arm terug naar de oorspronkelijke positie
-  delay(2000);
-  
-  arm.X  = 10.0;
-  arm.Y  = 15.0;
+  delay(500);
+  arm.X  = 1.0;
+  arm.Y  = 6.0;
+  Serial.println("Nu gaan");
   arm.BerekenAantalGraden(arm.X, arm.Y);
   Serial.print("Hoek 1: ");
-  Serial.print(arm.Hoek1);
-  Serial.print(" Hoek 2: ");
-  Serial.print(arm.Hoek2);
-  Serial.print(" Hoek 3: ");
-  Serial.print(arm.Hoek3);
+  Serial.println(arm.Hoek1);
+  Serial.print("Hoek 2: ");
+  Serial.println(arm.Hoek2);
+  Serial.print("Hoek 3: ");
+  Serial.println(arm.Hoek3);
+  arm.DraaiMotor2(arm.Hoek1);  
+  arm.DraaiMotor3(arm.Hoek2);
+  arm.DraaiMotor4(arm.Hoek3);
+  Serial.println("------------------------------------------------------------------------------------------");
+  
 }
 
 void loop()// Hier worden functies geplaatst die herhaald worden
@@ -39,3 +44,30 @@ void loop()// Hier worden functies geplaatst die herhaald worden
 //  arm.DraaiMotor4(90);
 //  delay(1000);
 }
+
+  
+  
+//  Serial.print("phi= ");
+//  Serial.println(arm.phi);
+//  Serial.print("wx = ");
+//  Serial.println(arm.wx);
+//  Serial.print("wy= ");
+//  Serial.println(arm.wy);
+//
+//  Serial.print("delta= ");
+//  Serial.println(arm.delta);
+//  Serial.print("c2= ");
+//  Serial.println(arm.c2);
+//  Serial.print("s2= ");
+//  Serial.println(arm.s2);
+//  Serial.print("theta_2= ");
+//  Serial.println(arm.theta_2);
+//
+//  Serial.print("s1= ");
+//  Serial.println(arm.s1);
+//  Serial.print("c1= ");
+//  Serial.println(arm.c1);
+//  Serial.print("theta_1= ");
+//  Serial.println(arm.theta_1);
+//  Serial.print("theta_3= ");
+//  Serial.println(arm.theta_3);
