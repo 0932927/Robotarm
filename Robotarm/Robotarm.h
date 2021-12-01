@@ -29,6 +29,7 @@ class Robotarm {
         void AlsKleinerDan(uint8_t, uint8_t);
 		void HerstelServos();
 		float mirrorM(float);
+		void RoteerNaar(float, float);
 		float X, Y, Z; // Dot zijn de eind posities
 		int Getal;
 		float Hoek1 =1, Hoek2=2, Hoek3=3;
