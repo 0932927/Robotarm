@@ -146,5 +146,15 @@ float Robotarm::mirrorM(float hoek){
 	
 }
 
-//hallo testsouf
-//doei
+void Robotarm::RoteerNaar(uint8_t x, uint8_t z) //coordinaten moeten hier doorgegeven worden, eerst alleen x en y
+{
+	double angle = atan2(z, x) * 180 / M_PI; // Slope Z, Slope X
+    if(angle<0){
+      angle= 360+angle;
+      return angle;
+    }
+    else if(angle>0){
+      return angle;
+    }
+	Motor1.write(angle);
+}
