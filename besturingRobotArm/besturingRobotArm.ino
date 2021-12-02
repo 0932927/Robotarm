@@ -7,21 +7,23 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   Serial.begin(9600);
   //Serial.setTimeout(3);// 1000 ms is 1 s
   arm.attach();
+  Serial.println("Herstel");
   arm.HerstelServos();// Zet de arm terug naar de oorspronkelijke positie
   delay(500);
-  arm.X  = -10.0;
-  arm.Y  = 10.0;
+  arm.X  = 0.0;
+  arm.Y  = 9.0;
   Serial.println("Nu gaan");
-  arm.BerekenAantalGraden(arm.X, arm.Y);
+  //arm.BerekenAantalGraden(arm.X, arm.Y);
+  arm.dof2Move(arm.X,arm.Y);
   Serial.print("Hoek 1: ");
-  Serial.println(arm.Hoek1);
+  Serial.println(arm.hoek1dof2);
   Serial.print("Hoek 2: ");
-  Serial.println(arm.Hoek2);
-  Serial.print("Hoek 3: ");
-  Serial.println(arm.Hoek3);
-  arm.DraaiMotor2(arm.Hoek1);  
-  arm.DraaiMotor3(arm.Hoek2);
-  arm.DraaiMotor4(arm.Hoek3);
+  Serial.println(arm.hoek2dof2);
+//  Serial.print("Hoek 3: ");
+//  Serial.println(arm.Hoek3);
+  arm.DraaiMotor2(arm.hoek1dof2);  
+  arm.DraaiMotor3(arm.hoek2dof2);
+//  arm.DraaiMotor4(arm.Hoek3);
   Serial.println("------------------------------------------------------------------------------------------");
   
 }

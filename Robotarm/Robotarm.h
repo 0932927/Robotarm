@@ -39,7 +39,7 @@ class Robotarm {
     private:
 		int pin_Motor1 = 2;// Dig.pin  we beginnen bij 2 omdat 0 en 1 ook TX en RX zij voor UART. De servo krijgt telkens een schok voor dat de beweging wordt uitgevoerd
 		int pin_Motor2 = 3;//Dig pin 3
-		int pin_Motor3 = 4;//Dig pin 4
+		int pin_Motor3 = 6;//Dig pin 4
 		int pin_Motor4 = 5;//Dig pin 5
 		float Arm_1 = 12.2; // 5.2; // lengte in cm
 		float Arm_2 = 12.5; // 6.9;

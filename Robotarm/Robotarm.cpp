@@ -143,9 +143,15 @@ void Robotarm::dof2Move(float X, float Y){
 	if(Y>X || Y==X){
 		hoek2dof2 = acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
 		hoek1dof2 = atan(Y/X) - atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
+		
+		hoek2dof2 = radToDeg(hoek2dof2);
+		hoek1dof2 = radToDeg(hoek1dof2);
 	} else{
 		hoek2dof2 = -acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
 		hoek1dof2 = atan(Y/X) + atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
+		
+		hoek2dof2 = radToDeg(hoek2dof2);
+		hoek1dof2 = radToDeg(hoek1dof2);
 	}
 }
 
