@@ -15,7 +15,7 @@
 class Robotarm {
     public:
         void attach(); // Dit moet aangeroepen worden in void setup()
-		void vastePositie(int);// hier komt het getal (1 of 2 of 3 ..ect) dan wordt bepaald welke x,y,z
+		void vastePositie(int);// hier komt het Letter (1 of 2 of 3 ..ect) dan wordt bepaald welke x,y,z
         void GaNaar(uint8_t, uint8_t);// Deze krijgen we van de Arduino sketch, we beginnen eerst met x en y
 		void BerekenAantalGraden(float, float);// De gekregen coordinaten in deze functie meegeven om de hoeken te bepalen
         //void DraaiOnderkant(uint8_t);
@@ -31,11 +31,12 @@ class Robotarm {
 		float mirrorM(float);
 		void dof2Move(float, float);
 		float X, Y, Z; // Dot zijn de eind posities
-		int Getal;
+		char Letter;
 		float Hoek1 =1, Hoek2=2, Hoek3=3;
 		float wx, wy, delta, theta_1, theta_2, theta_3, c1, c2, s1, s2;
 		float phi;
 		float hoek1dof2, hoek2dof2;
+		int Cijfer;
     private:
 		int pin_Motor1 = 2;// Dig.pin  we beginnen bij 2 omdat 0 en 1 ook TX en RX zij voor UART. De servo krijgt telkens een schok voor dat de beweging wordt uitgevoerd
 		int pin_Motor2 = 3;//Dig pin 3

@@ -43,32 +43,50 @@ void Robotarm::BerekenAantalGraden(float X,float Y)
 }
 
 //
-void Robotarm::vastePositie(int Getal)
-{
-	if (Getal == 1)
-	{
-		Motor3.write(-45, 30, true);
-		return;
-		//BerekenAantalGraden(float, float) // hier worden de x en y meegegeven afhankelijjk van welke getal is gekozen
-	}
-	else if(Getal == 2)
-	{
-		Motor3.write(45, 30, true);
-		return;
-		//BerekenAantalGraden(float, float)
-	}
-	else if(Getal == 3)
-	{
-		Motor3.write(70, 30, true);
-		return;
-		//BerekenAantalGraden(float, float)
-	}
-	else if(Getal == 4)
-	{
-		Motor3.write(-100, 30, true);
-		return;
-		//BerekenAantalGraden(float, float)
-	}
+void Robotarm::vastePositie(char Letter, int Cijfer)
+ if(Cijfer==1){
+
+        if(Letter=="A"){
+
+
+
+        }
+        else if(Letter=="B"){
+
+
+
+        }
+        else if(Letter=="C"){
+
+           
+
+        }
+    }
+    else if(Cijfer==2){
+
+        if(Letter=="A"){
+
+
+
+        }
+        else if(Letter=="B"){
+
+
+
+        }
+    }
+    else if(Cijfer==3){
+
+        if(Letter=="A"){
+
+
+
+        }
+        else if(Letter=="B"){
+
+
+        }
+    }
 }	
 
 void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeven worden, eerst alleen x en y
