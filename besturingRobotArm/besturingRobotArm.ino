@@ -9,8 +9,8 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   arm.attach();
   arm.HerstelServos();// Zet de arm terug naar de oorspronkelijke positie
   delay(500);
-  arm.X  = 1.0;
-  arm.Y  = 6.0;
+  arm.X  = -10.0;
+  arm.Y  = 10.0;
   Serial.println("Nu gaan");
   arm.BerekenAantalGraden(arm.X, arm.Y);
   Serial.print("Hoek 1: ");

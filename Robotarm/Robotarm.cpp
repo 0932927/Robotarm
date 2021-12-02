@@ -1,7 +1,5 @@
 #include "Robotarm.h"
 
-
-
 void Robotarm::attach() {
     Motor1.attach(pin_Motor1);// base motor
     Motor2.attach(pin_Motor2);// op de base arm 1
@@ -23,7 +21,7 @@ void Robotarm::HerstelServos()// om de arm naar de standaard posities terug te z
 
 void Robotarm::BerekenAantalGraden(float X,float Y)
 {
-	phi = 180.0;
+	phi = 0.0;
 	phi = degToRad(phi); // zelf gedefinieerd in robotarm.h
 
 	wx = X - Arm_3*cos(phi);
@@ -39,7 +37,7 @@ void Robotarm::BerekenAantalGraden(float X,float Y)
 	theta_1 = atan2(s1,c1);
 	theta_3 = phi-theta_1-theta_2;
 
-	Hoek1 = radToDeg(theta_1)+90;
+	Hoek1 = radToDeg(theta_1);
 	Hoek2 = radToDeg(theta_2);
 	Hoek3 = radToDeg(theta_3);
 }
@@ -90,25 +88,21 @@ void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeve
 
 //}
 
-void Robotarm::DraaiMotor1(uint8_t aantalgraden) 
-{
+void Robotarm::DraaiMotor1(uint8_t aantalgraden) {
     Motor1.write(aantalgraden, 30, true);
 	return;
 }
 
-void Robotarm::DraaiMotor2(int aantalgraden) 
-{		
+void Robotarm::DraaiMotor2(int aantalgraden) {		
 	aantalgraden = mirrorM(aantalgraden);
     Motor2.write(aantalgraden, 30, true);
 }
 
-void Robotarm::DraaiMotor3(uint8_t aantalgraden) 
-{
+void Robotarm::DraaiMotor3(uint8_t aantalgraden) {
     Motor3.write(aantalgraden, 30, true);
 }
 
-void Robotarm::DraaiMotor4(uint8_t aantalgraden) 
-{
+void Robotarm::DraaiMotor4(uint8_t aantalgraden) {
     Motor4.write(aantalgraden, 30, true);
 }
 
@@ -120,13 +114,11 @@ void Robotarm::OpenKop() {
 	//DraaiMotor5 wanneer deze wordt aangesloten voor de kop
 }
 
-void Robotarm::AlsGroterDan(uint8_t a, uint8_t b) 
-{
+void Robotarm::AlsGroterDan(uint8_t a, uint8_t b) {
 
 }
 
-void Robotarm::AlsKleinerDan(uint8_t a, uint8_t b) 
-{
+void Robotarm::AlsKleinerDan(uint8_t a, uint8_t b) {
 
 }
 
@@ -146,14 +138,14 @@ float Robotarm::mirrorM(float hoek){
 	
 }
 
-void Robotarm::RoteerNaar(float X, float Z) //coordinaten moeten hier doorgegeven worden, eerst alleen x en y
-{
-	double angle = atan2(Z, X) * 180 / M_PI; // Slope Z, Slope X
-    if(angle<0){
-      angle= 360+angle;
-    }
-    else if(angle>0){
-		angle = angle;
-    }
-	Motor1.write(angle);
+void Robotarm::dof2Move(float X, float Y){
+	//dit is de 2 DOF versie van de inverse kinematica
+	if(Y>X || Y==X){
+		hoek2dof2 = acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
+		hoek1dof2 = atan(Y/X) - atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
+	} else{
+		hoek2dof2 = -acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
+		hoek1dof2 = atan(Y/X) + atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
+	}
 }
+
