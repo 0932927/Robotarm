@@ -30,6 +30,7 @@ class Robotarm {
 		void HerstelServos();
 		float mirrorM(float);
 		void dof2Move(float, float);
+		void naarPunt(char, int);
 		float X, Y, Z; // Dot zijn de eind posities
 		char Letter;
 		float Hoek1 =1, Hoek2=2, Hoek3=3;
