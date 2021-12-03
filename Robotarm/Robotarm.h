@@ -8,6 +8,7 @@
 //#include <Servo.h>
 #include <VarSpeedServo.h> 
 #include <math.h>
+#include <string>
 
 
 

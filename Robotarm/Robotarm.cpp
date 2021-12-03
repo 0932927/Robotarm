@@ -159,731 +159,365 @@ void Robotarm::naarPunt(char letter, int cijfer){
 	//dit is de 2 DOF versie van de inverse kinematica
 	if(cijfer==1){
 		// -------------------------------------------------------------------------------------
-		if(letter=="A"){
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
+		string cirkel1 = "ACEGIKMOQSUW";
+		string cirkel2 = "BDFHJLNPRTVX";
+		if(cirkel1.find(letter) != string::npos ){
+			if(letter=="A"){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="C"){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="E"){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="G"){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="I"){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="K"){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="M"){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="O"){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="Q"){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="S"){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="U"){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="W"){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(90, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
 			Motor4.write(90, 40, true);
 			delay(500);
+// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(letter=="B"){
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
+		else if(cirkel2.find(letter) != string::npos ){
+			else if(letter=="B"){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="D"){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="F"){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="H"){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="J"){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="L"){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="N"){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="P"){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="R"){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="T"){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="V"){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="X"){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(90, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
 			Motor4.write(90, 40, true);
 			delay(500);
+// --------------------------------------------------------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(letter=="C"){
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="D"){
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="E"){
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="F"){
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="G"){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="H"){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="I"){
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="J"){
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="K"){
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="L"){
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="M"){
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="N"){
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="O"){
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);		
-		}
-		else if(letter=="P"){
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="Q"){
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="R"){
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="S"){
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="T"){
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="U"){
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="V"){
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="W"){
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="X"){
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-	} 
+	}
 	else if(cijfer==2){
-		// ----------------------------------------------------------------------------------
-		if(letter=="A"){
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
+			// -------------------------------------------------------------------------------------
+		string cirkel1 = "ACEGIKMOQSUW";
+		string cirkel2 = "BDFHJLNPRTVX";
+		if(cirkel1.find(letter) != string::npos ){
+			if(letter=="A"){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="C"){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="E"){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="G"){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="I"){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="K"){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="M"){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="O"){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="Q"){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="S"){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="U"){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="W"){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(90, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
 			Motor4.write(90, 40, true);
 			delay(500);
+// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(letter=="B"){
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
+		else if(cirkel2.find(letter) != string::npos ){
+			else if(letter=="B"){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="D"){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="F"){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="H"){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="J"){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="L"){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="N"){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="P"){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="R"){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="T"){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="V"){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="X"){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(90, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
 			Motor4.write(90, 40, true);
 			delay(500);
-		}
-		else if(letter=="C"){
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="D"){
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="E"){
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="F"){
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="G"){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="H"){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="I"){
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="J"){
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="K"){
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="L"){
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="M"){
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="N"){
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="O"){
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);		
-		}
-		else if(letter=="P"){
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="Q"){
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="R"){
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="S"){
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="T"){
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="U"){
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="V"){
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="W"){
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="X"){
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
+// --------------------------------------------------------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 	}
 	else if(cijfer==3){
-		// ----------------------------------------------------------------------------------
-		if(letter=="A"){
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
+			// -------------------------------------------------------------------------------------
+		string cirkel1 = "ACEGIKMOQSUW";
+		string cirkel2 = "BDFHJLNPRTVX";
+		if(cirkel1.find(letter) != string::npos ){
+			if(letter=="A"){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="C"){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="E"){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="G"){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="I"){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="K"){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="M"){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="O"){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="Q"){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="S"){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="U"){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="W"){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(90, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
 			Motor4.write(90, 40, true);
 			delay(500);
+// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(letter=="B"){
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
+		else if(cirkel2.find(letter) != string::npos ){
+			else if(letter=="B"){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="D"){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="F"){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="H"){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="J"){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="L"){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="N"){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="P"){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="R"){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=="T"){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="V"){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=="X"){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(90, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
 			Motor4.write(90, 40, true);
 			delay(500);
-		}
-		else if(letter=="C"){
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="D"){
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="E"){
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="F"){
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="G"){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="H"){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="I"){
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="J"){
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="K"){
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="L"){
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="M"){
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="N"){
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="O"){
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);		
-		}
-		else if(letter=="P"){
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="Q"){
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="R"){
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);				
-		}
-		else if(letter=="S"){
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);
-		}
-		else if(letter=="T"){
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="U"){
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="V"){
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="W"){
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
-		}
-		else if(letter=="X"){
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			Motor2.write(90, 30, true);
-			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(90, 40, true);
-			delay(500);	
+// --------------------------------------------------------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 	}
 }
