@@ -8,7 +8,8 @@
 //#include <Servo.h>
 #include <VarSpeedServo.h> 
 #include <math.h>
-#include <string>
+#include <string.h>
+#include <stdio.h>
 
 
 
@@ -31,7 +32,7 @@ class Robotarm {
 		void HerstelServos();
 		float mirrorM(float);
 		void dof2Move(float, float);
-		void naarPunt(char, int);
+		void naarPunt(char, char);
 		float X, Y, Z; // Dot zijn de eind posities
 		char Letter;
 		float Hoek1 =1, Hoek2=2, Hoek3=3;
