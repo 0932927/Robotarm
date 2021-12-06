@@ -179,7 +179,7 @@ void Robotarm::naarPunt(char Letter, char Cijfer){
 			}
 		else if(Letter=='H')
 		{
-			Motor1.write(112.5, 30, true); //rotatie
+			Motor3.write(112.5, 30, true); //rotatie
 			delay(500);
 			}
 		else if(Letter=='J')
@@ -224,62 +224,73 @@ void Robotarm::naarPunt(char Letter, char Cijfer){
 			}
 		else if(Letter=='A')
 		{
-			Motor1.write(22.5, 30, true); //rotatie
+			Motor1.write(25.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='C')
 		{
-			Motor1.write(45, 30, true); //rotatie
+			Motor1.write(50.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='E')
 		{
-			Motor1.write(67.5, 30, true); //rotatie
+			Motor1.write(75.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='G'){
-			Motor1.write(112.5, 30, true); //rotatie
+			Motor1.write(125.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='I')
 		{
-			Motor1.write(135, 30, true); //rotatie
+			Motor1.write(150.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='K')
 		{
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);			
+			Motor1.write(175.0, 30, true); //rotatie
+			delay(500);	
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='M')
 		{
-			Motor1.write(202.5, 30, true); //rotatie
+			Motor1.write(225.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='O')
 		{
-			Motor1.write(225, 30, true); //rotatie
+			Motor1.write(250.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='Q')
 		{
-			Motor1.write(247.5, 30, true); //rotatie
+			Motor1.write(275.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='S')
 		{
-			Motor1.write(292.5, 30, true); //rotatie
+			Motor1.write(300.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='U')
 		{
-			Motor1.write(315, 30, true); //rotatie
+			Motor1.write(325.0, 30, true); //rotatie
 			delay(500);
+			Motor2.write(45, 30, true); //rotatie
 			}
 		else if(Letter=='W')
 		{
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
+			Motor1.write(350.0, 30, true); //rotatie
+			delay(500);Motor2.write(45, 30, true); //rotatie
 			}
 	}
 	else if(Cijfer == '2')
