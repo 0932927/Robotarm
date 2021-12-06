@@ -160,12 +160,371 @@ void Robotarm::dof2Move(float X, float Y){
 void Robotarm::naarPunt(char Letter, char Cijfer){
 	//dit is de 2 DOF versie van de inverse kinematica
 
-	if(Cijfer == '1' && Letter == 'A')// P.S:(''): dit wordt gezien als een const char en ("") wordt gezien als een const char.
+	if(Cijfer == '1')// P.S:(''): dit wordt gezien als een const char en ("") wordt gezien als een const char.
 	{
-		HerstelServos();
-		Motor3.write(45, 30, true);
+		if(Letter=='B')
+		{
+			Motor1.write(22.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='D')
+		{
+			Motor1.write(45, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='F')
+		{
+			Motor1.write(67.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='H')
+		{
+			Motor1.write(112.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='J')
+		{
+			Motor1.write(135, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='L')
+		{
+			Motor1.write(157.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='N')
+		{
+			Motor1.write(202.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='P')
+		{
+			Motor1.write(225, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='R')
+		{
+			Motor1.write(247.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='T')
+		{
+			Motor1.write(292.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='V')
+			{
+			Motor1.write(315, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='X')
+		{
+			Motor1.write(337.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='A')
+		{
+			Motor1.write(22.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='C')
+		{
+			Motor1.write(45, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='E')
+		{
+			Motor1.write(67.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='G'){
+			Motor1.write(112.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='I')
+		{
+			Motor1.write(135, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='K')
+		{
+			Motor1.write(157.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='M')
+		{
+			Motor1.write(202.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='O')
+		{
+			Motor1.write(225, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='Q')
+		{
+			Motor1.write(247.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='S')
+		{
+			Motor1.write(292.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='U')
+		{
+			Motor1.write(315, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='W')
+		{
+			Motor1.write(337.5, 30, true); //rotatie
+			delay(500);
+			}
 	}
-	else{
-		Motor3.write(120, 30, true);
-	}
+	else if(Cijfer == '2')
+	{
+		if(Letter=='A')
+		{
+			Motor1.write(22.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='C')
+		{
+			Motor1.write(45, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='E')
+		{
+			Motor1.write(67.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='G'){
+			Motor1.write(112.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='I')
+		{
+			Motor1.write(135, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='K')
+		{
+			Motor1.write(157.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='M')
+		{
+			Motor1.write(202.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='O')
+		{
+			Motor1.write(225, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='Q')
+		{
+			Motor1.write(247.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='S')
+		{
+			Motor1.write(292.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='U')
+		{
+			Motor1.write(315, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='W')
+		{
+			Motor1.write(337.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='B')
+		{
+			Motor1.write(22.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='D')
+		{
+			Motor1.write(45, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='F')
+		{
+			Motor1.write(67.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='H')
+		{
+			Motor1.write(112.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='J')
+		{
+			Motor1.write(135, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='L')
+		{
+			Motor1.write(157.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='N')
+		{
+			Motor1.write(202.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='P')
+		{
+			Motor1.write(225, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='R')
+		{
+			Motor1.write(247.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='T')
+		{
+			Motor1.write(292.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='V')
+		{
+			Motor1.write(315, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='X')
+		{
+			Motor1.write(337.5, 30, true); //rotatie
+			delay(500);
+			}
+		}
+	else if(Cijfer == '3')
+	{
+		if(Letter=='A')
+		{
+			Motor1.write(22.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='C')
+		{
+			Motor1.write(45, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='E')
+		{
+			Motor1.write(67.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='G')
+		{
+			Motor1.write(112.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='I')
+		{
+			Motor1.write(135, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='K')
+		{
+			Motor1.write(157.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='M')
+		{
+			Motor1.write(202.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='O')
+		{
+			Motor1.write(225, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='Q')
+		{
+			Motor1.write(247.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='S')
+		{
+			Motor1.write(292.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='U')
+		{
+			Motor1.write(315, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='W')
+		{
+			Motor1.write(337.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='B')
+		{
+			Motor1.write(22.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='D')
+		{
+			Motor1.write(45, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='F')
+		{
+			Motor1.write(67.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter == 'H')
+		{
+			Motor1.write(112.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='J')
+		{
+			Motor1.write(135, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='L')
+		{
+			Motor1.write(157.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='N')
+		{
+			Motor1.write(202.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='P')
+		{
+			Motor1.write(225, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='R')
+		{
+			Motor1.write(247.5, 30, true); //rotatie
+			delay(500);			
+			}
+		else if(Letter=='T')
+		{
+			Motor1.write(292.5, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='V')
+		{
+			Motor1.write(315, 30, true); //rotatie
+			delay(500);
+			}
+		else if(Letter=='X')
+		{
+			Motor1.write(337.5, 30, true); //rotatie
+			delay(500);
+			}
+}
 }
