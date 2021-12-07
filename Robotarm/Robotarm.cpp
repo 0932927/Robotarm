@@ -106,6 +106,25 @@ void Robotarm::DraaiMotor4(uint8_t aantalgraden) {
     Motor4.write(aantalgraden, 30, true);
 }
 
+/*---------------Uncomment dit wanneer grijper is aangesloten-------------------
+void Robotarm::SluitKop() {
+	//DraaiMotor5 wanneer deze wordt aangesloten voor de kop
+	Motor5.write(45, 30, true);
+}
+
+void Robotarm::OpenKop() {
+	//DraaiMotor5 wanneer deze wordt aangesloten voor de kop
+	Motor5.write(45, 30, true);
+}
+void Robotarm::Grijpen(){
+	SluitKop();
+	delay(500);
+	OpenKop();
+	delay(500);
+}
+Omdat we nog geen grijper hebben is deze code ook nog niet getest, dit is simpel code voor het grijpen we gaan ervan uit dat het werkt
+*/
+
 void Robotarm::SluitKop() {
 	//DraaiMotor5 wanneer deze wordt aangesloten voor de kop
 }
@@ -154,8 +173,12 @@ void Robotarm::dof2Move(float X, float Y){
 		hoek1dof2 = radToDeg(hoek1dof2);
 	}
 }
-	//char Cijfer_str[1]; //
+	//char Cijfer_str[1]; //Dit was bedoeld om int om te zetten naar string
 	//sprintf(Cijfer_str, "%f", Cijfer);
+	
+/*Functie naarPunt is bedoeld om vaste posities op een grafiek te bereiken
+alle vaste posities zijn gedefinieerd in de code, de leerling dient alleen een locatie te kiezen
+Bijvoorbeeld: Locatie A hoogte 1, locatie A hoogte 2 locatie A hoogte 3 elke letter heeft 3 niveaus*/
 	
 void Robotarm::naarPunt(char Letter, char Cijfer){
 	//dit is de 2 DOF versie van de inverse kinematica
