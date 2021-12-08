@@ -180,385 +180,361 @@ void Robotarm::dof2Move(float X, float Y){
 alle vaste posities zijn gedefinieerd in de code, de leerling dient alleen een locatie te kiezen
 Bijvoorbeeld: Locatie A hoogte 1, locatie A hoogte 2 locatie A hoogte 3 elke letter heeft 3 niveaus*/
 	
-void Robotarm::naarPunt(char Letter, char Cijfer){
-	//dit is de 2 DOF versie van de inverse kinematica
-
-	if(Cijfer == '1')// P.S:(''): dit wordt gezien als een const char en ("") wordt gezien als een const char.
-	{
-		if(Letter=='B')
-		{
-			Motor1.write(22.5, 30, true); //rotatie
+void Robotarm::naarPunt(char letter, char cijfer){
+	String cirkel1 = "ACEGIKMOQSUW";
+	String cirkel2 = "BDFHJLNPRTVX";
+	if(cijfer == '1'){
+		if(cirkel1.indexOf(letter) <= 0){
+			if(letter=='A'){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='C'){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='E'){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='G'){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='I'){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='K'){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='M'){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='O'){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='Q'){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='S'){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='U'){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='W'){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Motor2.write(90, 30, true);
 			delay(500);
-			}
-		else if(Letter=='D')
-		{
-			Motor1.write(45, 30, true); //rotatie
+			Motor3.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='F')
-		{
-			Motor1.write(67.5, 30, true); //rotatie
+			Motor4.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='H')
-		{
-			Motor3.write(112.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='J')
-		{
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='L')
-		{
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='N')
-		{
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='P')
-		{
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='R')
-		{
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='T')
-		{
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='V')
-			{
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='X')
-		{
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='A')
-		{
-			Motor1.write(25.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='C')
-		{
-			Motor1.write(50.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='E')
-		{
-			Motor1.write(75.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='G'){
-			Motor1.write(125.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='I')
-		{
-			Motor1.write(150.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='K')
-		{
-			Motor1.write(175.0, 30, true); //rotatie
-			delay(500);	
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='M')
-		{
-			Motor1.write(225.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='O')
-		{
-			Motor1.write(250.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='Q')
-		{
-			Motor1.write(275.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='S')
-		{
-			Motor1.write(300.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='U')
-		{
-			Motor1.write(325.0, 30, true); //rotatie
-			delay(500);
-			Motor2.write(45, 30, true); //rotatie
-			}
-		else if(Letter=='W')
-		{
-			Motor1.write(350.0, 30, true); //rotatie
-			delay(500);Motor2.write(45, 30, true); //rotatie
-			}
-	}
-	else if(Cijfer == '2')
-	{
-		if(Letter=='A')
-		{
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='C')
-		{
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='E')
-		{
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='G'){
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='I')
-		{
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='K')
-		{
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='M')
-		{
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='O')
-		{
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='Q')
-		{
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='S')
-		{
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='U')
-		{
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='W')
-		{
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='B')
-		{
-			Motor1.write(22.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='D')
-		{
-			Motor1.write(45, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='F')
-		{
-			Motor1.write(67.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='H')
-		{
-			Motor1.write(112.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='J')
-		{
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='L')
-		{
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='N')
-		{
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='P')
-		{
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='R')
-		{
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='T')
-		{
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='V')
-		{
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='X')
-		{
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			}
+	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-	else if(Cijfer == '3')
-	{
-		if(Letter=='A')
-		{
-			Motor1.write(22.5, 30, true); //rotatie
+		else if(cirkel2.indexOf(letter) <= 0){
+			else if(letter=='B'){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='D'){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='F'){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='H'){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='J'){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='L'){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='N'){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='P'){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='R'){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='T'){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='V'){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='X'){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Motor2.write(90, 30, true);
 			delay(500);
-			}
-		else if(Letter=='C')
-		{
-			Motor1.write(45, 30, true); //rotatie
+			Motor3.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='E')
-		{
-			Motor1.write(67.5, 30, true); //rotatie
+			Motor4.write(90, 40, true);
 			delay(500);
+// ------------------------------------------
+		}
+	}
+	else if(cijfer == '2'){
+		if(cirkel1.indexOf(letter) <= 0){
+			if(letter=='A'){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
 			}
-		else if(Letter=='G')
-		{
-			Motor1.write(112.5, 30, true); //rotatie
+			else if(letter=='C'){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='E'){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='G'){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='I'){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='K'){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='M'){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='O'){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='Q'){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='S'){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='U'){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='W'){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Motor2.write(90, 30, true);
 			delay(500);
-			}
-		else if(Letter=='I')
-		{
-			Motor1.write(135, 30, true); //rotatie
+			Motor3.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='K')
-		{
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='M')
-		{
-			Motor1.write(202.5, 30, true); //rotatie
+			Motor4.write(90, 40, true);
 			delay(500);
+	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		}
+		else if(cirkel2.indexOf(letter) <= 0){
+			else if(letter=='B'){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
 			}
-		else if(Letter=='O')
-		{
-			Motor1.write(225, 30, true); //rotatie
+			else if(letter=='D'){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='F'){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='H'){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='J'){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='L'){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='N'){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='P'){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='R'){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='T'){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='V'){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='X'){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Motor2.write(90, 30, true);
 			delay(500);
-			}
-		else if(Letter=='Q')
-		{
-			Motor1.write(247.5, 30, true); //rotatie
+			Motor3.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='S')
-		{
-			Motor1.write(292.5, 30, true); //rotatie
+			Motor4.write(90, 40, true);
 			delay(500);
+// ------------------------------------------
+		}
+	}
+	else if(cijfer == '3'){
+		if(cirkel1.indexOf(letter) <= 0){
+			if(letter=='A'){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
 			}
-		else if(Letter=='U')
-		{
-			Motor1.write(315, 30, true); //rotatie
+			else if(letter=='C'){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='E'){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='G'){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='I'){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='K'){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='M'){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='O'){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='Q'){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='S'){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='U'){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='W'){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Motor2.write(90, 30, true);
 			delay(500);
-			}
-		else if(Letter=='W')
-		{
-			Motor1.write(337.5, 30, true); //rotatie
+			Motor3.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='B')
-		{
-			Motor1.write(22.5, 30, true); //rotatie
+			Motor4.write(90, 40, true);
 			delay(500);
+	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		}
+		else if(cirkel2.indexOf(letter) <= 0){
+			else if(letter=='B'){
+				Motor1.write(22.5, 30, true); //rotatie
+				delay(500);
 			}
-		else if(Letter=='D')
-		{
-			Motor1.write(45, 30, true); //rotatie
+			else if(letter=='D'){
+				Motor1.write(45, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='F'){
+				Motor1.write(67.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='H'){
+				Motor1.write(112.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='J'){
+				Motor1.write(135, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='L'){
+				Motor1.write(157.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='N'){
+				Motor1.write(202.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='P'){
+				Motor1.write(225, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='R'){
+				Motor1.write(247.5, 30, true); //rotatie
+				delay(500);			
+			}
+			else if(letter=='T'){
+				Motor1.write(292.5, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='V'){
+				Motor1.write(315, 30, true); //rotatie
+				delay(500);
+			}
+			else if(letter=='X'){
+				Motor1.write(337.5, 30, true); //rotatie
+				delay(500);
+			}
+// ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Motor2.write(90, 30, true);
 			delay(500);
-			}
-		else if(Letter=='F')
-		{
-			Motor1.write(67.5, 30, true); //rotatie
+			Motor3.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter == 'H')
-		{
-			Motor1.write(112.5, 30, true); //rotatie
+			Motor4.write(90, 40, true);
 			delay(500);
-			}
-		else if(Letter=='J')
-		{
-			Motor1.write(135, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='L')
-		{
-			Motor1.write(157.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='N')
-		{
-			Motor1.write(202.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='P')
-		{
-			Motor1.write(225, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='R')
-		{
-			Motor1.write(247.5, 30, true); //rotatie
-			delay(500);			
-			}
-		else if(Letter=='T')
-		{
-			Motor1.write(292.5, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='V')
-		{
-			Motor1.write(315, 30, true); //rotatie
-			delay(500);
-			}
-		else if(Letter=='X')
-		{
-			Motor1.write(337.5, 30, true); //rotatie
-			delay(500);
-			}
-}
+// ------------------------------------------
+		}
+	}
 }
