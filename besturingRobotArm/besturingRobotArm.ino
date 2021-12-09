@@ -18,7 +18,7 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   delay(1000);
   arm.naarPunt('A','3');
   delay(1000);
-//  arm.naarPunt('A','3');
+  arm.naarPunt('A','3');
 }
 void loop()// Hier worden functies geplaatst die herhaald worden
 {
