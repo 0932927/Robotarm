@@ -39,7 +39,7 @@ class Robotarm {
 		float wx, wy, delta, theta_1, theta_2, theta_3, c1, c2, s1, s2;
 		float phi;
 		float hoek1dof2, hoek2dof2;
-		char Cijfer;
+		char cijfer;
 		char Letter;
     private:
 		int pin_Motor1 = 2;// Dig pin 1 we beginnen bij 2 omdat 0 en 1 ook TX en RX zij voor UART. De servo krijgt telkens een schok voor dat de beweging wordt uitgevoerd
