@@ -181,7 +181,7 @@ alle vaste posities zijn gedefinieerd in de code, de leerling dient alleen een l
 Bijvoorbeeld: Locatie A hoogte 1, locatie A hoogte 2 locatie A hoogte 3 elke letter heeft 3 niveaus*/
 	
 void Robotarm::naarPunt(char letter, char cijfer){
-	String cirkel1 = 'ACEGIKMOQSUW' ;
+	String cirkel1 = 'ACEGIKMOQSUW';// P.S:(''): dit wordt gezien als een const char en ("") wordt gezien als een const char.
 	String cirkel2 = 'BDFHJLNPRTVX';
 	if(cijfer == '1'){
 		if(cirkel1.indexOf(letter) <= 0){
