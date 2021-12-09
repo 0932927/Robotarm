@@ -237,10 +237,11 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			float aantalgraden = mirrorM(45);
 			Motor2.write(aantalgraden, 30, true);
 			delay(500);
+			Motor4.write(155, 40, true);
+			delay(500);
 			Motor3.write(0, 40, true);
 			delay(500);
-			Motor4.write(135, 40, true);
-			delay(500);
+			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) <= 0){
@@ -353,12 +354,14 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Motor2.write(90, 30, true);
+			float aantalgraden = mirrorM(75);
+			Motor2.write(aantalgraden, 30, true);
 			delay(500);
-			Motor3.write(90, 40, true);
+			Motor3.write(0, 40, true);
 			delay(500);
-			Motor4.write(90, 40, true);
+			Motor4.write(135, 40, true);
 			delay(500);
+			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) <= 0){
@@ -471,11 +474,12 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Motor2.write(90, 30, true);
+			float aantalgraden = mirrorM(80);
+			Motor2.write(aantalgraden, 30, true);
 			delay(500);
-			Motor3.write(90, 40, true);
+			Motor3.write(45, 40, true);
 			delay(500);
-			Motor4.write(90, 40, true);
+			Motor4.write(80, 40, true);
 			delay(500);
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
@@ -529,11 +533,12 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Motor2.write(90, 30, true);
+			float aantalgraden = mirrorM(45);
+			Motor2.write(aantalgraden, 30, true);
 			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
-			Motor4.write(90, 40, true);
+			Motor4.write(45, 40, true);
 			delay(500);
 // ------------------------------------------
 		}
