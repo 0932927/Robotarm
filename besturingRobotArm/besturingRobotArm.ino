@@ -14,11 +14,23 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
 //  arm.Letter = 'A'; // Veranderd de letter tussen de twee haakpunten
 //  arm.naarPunt(arm.Letter, arm.Cijfer);  
   
-  arm.naarPunt('B','3');
+  arm.naarPunt('A','1');
   delay(1000);
-  arm.naarPunt('A','3');
+  arm.naarPunt('B','1');
   delay(1000);
-  arm.naarPunt('A','3');
+  arm.naarPunt('C','1');
+  delay(1000);
+  arm.naarPunt('D','1');
+  delay(1000);
+  arm.naarPunt('E','1');
+  delay(1000);
+  arm.naarPunt('F','1'); 
+    delay(1000);
+  arm.naarPunt('G','1');
+  delay(1000);
+  arm.naarPunt('H','1');
+  delay(1000);
+  arm.naarPunt('I','1'); 
 }
 void loop()// Hier worden functies geplaatst die herhaald worden
 {
