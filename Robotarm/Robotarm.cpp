@@ -184,7 +184,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	String cirkel1 = "ACEGIKMOQSUW"; //P.S:(''): dit wordt gezien als een char en ("") wordt gezien als een const char.
 	String cirkel2 = "BDFHJLNPRTVX";
 	if(cijfer == '1'){
-		if(cirkel1.indexOf(letter) <= 0){
+		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
@@ -244,7 +244,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(cirkel2.indexOf(letter) <= 0){
+		else if(cirkel2.indexOf(letter) >= 0){
 			if(letter=='B'){
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
@@ -294,17 +294,19 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Motor2.write(90, 30, true);
-			delay(500);
 			Motor3.write(90, 40, true);
 			delay(500);
-			Motor4.write(90, 40, true);
+			float aantalgraden = mirrorM(10);
+			Motor2.write(aantalgraden, 30, true);
+			delay(500);
+			Motor4.write(115, 40, true);
 			delay(500);
 // ------------------------------------------
 		}
 	}
 	else if(cijfer == '2'){
-		if(cirkel1.indexOf(letter) <= 0){
+		Serial.println("Ik ben in cijfer 2");
+		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
@@ -364,8 +366,10 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(cirkel2.indexOf(letter) <= 0){
+		else if(cirkel2.indexOf(letter) >= 0){
+			Serial.println("Ik ben in cijfer 2");
 			if(letter=='B'){
+				Serial.println("Ik ben in cijfer 2 punt B");
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
 			}
@@ -414,20 +418,20 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Motor2.write(90, 30, true);
+			float aantalgraden = mirrorM(50);
+			Motor2.write(aantalgraden, 30, true);
 			delay(500);
-			Motor3.write(90, 40, true);
+			Motor3.write(50, 40, true);
 			delay(500);
-			Motor4.write(90, 40, true);
+			Motor4.write(115, 40, true);
 			delay(500);
 // ------------------------------------------
 		}
 	}
 	else if(cijfer == '3'){
-		if(cirkel1.indexOf(letter) <= 0){
+		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
 				Motor1.write(22.5, 30, true); //rotatie
-				Serial.println("we zijn bij A");
 				delay(500);
 			}
 			else if(letter=='C'){
@@ -484,9 +488,8 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			delay(500);
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
-		else if(cirkel2.indexOf(letter) <= 0){
+		else if(cirkel2.indexOf(letter) >= 0){
 			if(letter=='B'){
-				Serial.println("we zijn bij B");
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
 			}
@@ -535,12 +538,13 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+			Motor3.write(95, 30, true);
+			delay(500);
 			float aantalgraden = mirrorM(45);
 			Motor2.write(aantalgraden, 30, true);
 			delay(500);
-			Motor3.write(90, 40, true);
-			delay(500);
-			Motor4.write(45, 40, true);
+			Motor4.write(65, 30, true);
 			delay(500);
 // ------------------------------------------
 		}
