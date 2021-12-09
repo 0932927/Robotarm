@@ -427,6 +427,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		if(cirkel1.indexOf(letter) <= 0){
 			if(letter=='A'){
 				Motor1.write(22.5, 30, true); //rotatie
+				Serial.println("we zijn bij A");
 				delay(500);
 			}
 			else if(letter=='C'){
@@ -485,6 +486,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		}
 		else if(cirkel2.indexOf(letter) <= 0){
 			if(letter=='B'){
+				Serial.println("we zijn bij B");
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
 			}
