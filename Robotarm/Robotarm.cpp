@@ -243,7 +243,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) <= 0){
-			else if(letter=='B'){
+			if(letter=='B'){
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
 			}
@@ -361,7 +361,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) <= 0){
-			else if(letter=='B'){
+			if(letter=='B'){
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
 			}
@@ -479,7 +479,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) <= 0){
-			else if(letter=='B'){
+			if(letter=='B'){
 				Motor1.write(22.5, 30, true); //rotatie
 				delay(500);
 			}
