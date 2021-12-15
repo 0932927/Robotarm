@@ -38,6 +38,7 @@ class Robotarm {
 		float mirrorM(float);
 		void dof2Move(float, float);
 		void naarPunt(char, char);
+		void circle_method( float, float, float, float, int);
 		//void Grijpen(); // Uncomment dit wanneer grijper is aangesloten
 		float X, Y, Z; // Dot zijn de eind posities
 		float Hoek1 =1, Hoek2=2, Hoek3=3;
@@ -59,9 +60,6 @@ class Robotarm {
 		float radians;
 		float degrees;
 		float diff;
-
-		float hum_sq = HUMERUS * HUMERUS;
-		float uln_sq = ULNA * ULNA;
 		
         VarSpeedServo Motor1;
         VarSpeedServo Motor2;
