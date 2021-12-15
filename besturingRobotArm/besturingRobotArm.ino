@@ -13,7 +13,7 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
 //  arm.Cijfer = '2'; // Veranderd het getal tussen de twee haakpunten
 //  arm.Letter = 'A'; // Veranderd de letter tussen de twee haakpunten
 //  arm.naarPunt(arm.Letter, arm.Cijfer);  
-  
+    
 //  arm.naarPunt('A','3');
 //  delay(1000);
 //  arm.naarPunt('B','3');
@@ -38,8 +38,6 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
 }
 void loop()// Hier worden functies geplaatst die herhaald worden
 {
-
-
 //  arm.DraaiMotor1(90);
 //  delay(500);
 //  arm.DraaiMotor2(0);
@@ -48,5 +46,4 @@ void loop()// Hier worden functies geplaatst die herhaald worden
 //  delay(500);
 //  arm.DraaiMotor4(90);
 //  delay(500);
-
-  }
+}

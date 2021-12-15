@@ -556,18 +556,26 @@ void Robotarm::naarPunt(char letter, char cijfer){
 /* z is height, y is distance from base center out, x is side to side. y,z can only be positive */
 //void set_arm( uint16_t x, uint16_t y, uint16_t z, uint16_t grip_angle )
 void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int servoSpeed) {
+	int BASE_HGT = 51; //base height
+	int HUMERUS = 122; //shoulder-to-elbow "bone"
+	int ULNA = 125; //elbow-to-wrist "bone"
+	int GRIPPER = 50; //gripper (incl.heavy duty wrist rotate mechanism) length "
+// #define ftl(x) ((x)>=0?(long)((x)+0.5):(long)((x)-0.5)) //float to long conversion
+	float epsilon = 0.00001;
+	
 	float hum_sq = HUMERUS * HUMERUS;
 	float uln_sq = ULNA * ULNA;
+	
 
-	x == 0 ? Robotarm.epsilon : x;
-	y == 0 ? Robotarm.epsilon : y;
-	z == 0 ? Robotarm.epsilon : z;
+	x == 0 ? epsilon : x;
+	y == 0 ? epsilon : y;
+	z == 0 ? epsilon : z;
 	float base_angle_r = atan2(x, y);
 	float base_angle_d = degrees(base_angle_r);
 
 	//calculate arm points
-	float grip_offset_z = sin(grip_angle_d) * Robotarm.GRIPPER;
-	float grip_offset_y = cos(grip_angle_d) * Robotarm.GRIPPER;
+	float grip_offset_z = sin(grip_angle_d) * GRIPPER;
+	float grip_offset_y = cos(grip_angle_d) * GRIPPER;
 
 	float wrist_y = y - grip_offset_y;
 	float wrist_z = z - grip_offset_z;
@@ -580,16 +588,16 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	float dz = abs(wrist_z - shoulder_z);
 	float dist = sqrt(sq(dy) + sq(dz));
 
-	if (dist > Robotarm.ULNA + Robotarm.HUMERUS) {
-		Serial.println("Error: Out of range!");
+	if (dist > ULNA + HUMERUS) {
+		// Serial.println("Error: Out of range!");
 		return;
 	} 
-	else if (dist < abs(Robotarm.ULNA - Robotarm.HUMERUS)) {
-		Serial.println("Error: Too close!");
+	else if (dist < abs(ULNA - HUMERUS)) {
+		// Serial.println("Error: Too close!");
 		return;
 	} 
-	else if ((dist == 0) and (Robotarm.ULNA == Robotarm.HUMERUS)) {
-		Serial.println("Error: Exactly the same so idk how u got this");
+	else if ((dist == 0) and (ULNA == HUMERUS)) {
+		// Serial.println("Error: Exactly the same so idk how u got this");
 		return;
 	}
 
@@ -597,8 +605,8 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	float elbow_y;
 
 	//some intersection magic
-	float a = (abs(Robotarm.hum_sq - Robotarm.uln_sq) + sq(dist)) / (2*dist);
-	float h = sqrt(Robotarm.hum_sq - sq(a));
+	float a = (abs(hum_sq - uln_sq) + sq(dist)) / (2*dist);
+	float h = sqrt(hum_sq - sq(a));
 
 	float ym = shoulder_y + a*dy/dist;
 	float zm = shoulder_z + a*dz/dist;
@@ -609,11 +617,11 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	float ys2 = ym - h*dz/dist;
 	float zs2 = zm + h*dy/dist;
 
-	Serial.print("Wrist Point : (");
-	Serial.print(wrist_y);
-	Serial.print(",");
-	Serial.print(wrist_z);
-	Serial.println(")");
+	// Serial.print("Wrist Point : (");
+	// Serial.print(wrist_y);
+	// Serial.print(",");
+	// Serial.print(wrist_z);
+	// Serial.println(")");
 
 	//whichever intersection is more up
 	if (zs1 > zs2) {
@@ -624,28 +632,33 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 		elbow_z = zs2;
 		elbow_y = ys2;
 	}
-	Serial.print("Elbow Point : (");
-	Serial.print(elbow_y);
-	Serial.print(",");
-	Serial.print(elbow_z);
-	Serial.println(")");
+	// Serial.print("Elbow Point : (");
+	// Serial.print(elbow_y);
+	// Serial.print(",");
+	// Serial.print(elbow_z);
+	// Serial.println(")");
 
 	float shoulder_angle_d = degrees( atan2( abs(elbow_z - shoulder_z), abs(elbow_y - shoulder_y) ) );
 	float elbow_angle_d =  -(degrees( atan2( abs(wrist_z - elbow_z), abs(wrist_y - elbow_y) ) ) - shoulder_angle_d );
 	float wrist_angle_d = degrees( atan2(z - wrist_z, y - wrist_y)) - elbow_angle_d - shoulder_angle_d + 180;
 
-	Serial.print("Angles : ");
-	Serial.print(base_angle_d);
-	Serial.print(" ");
-	Serial.print(shoulder_angle_d);
-	Serial.print(" ");
-	Serial.print(elbow_angle_d);
-	Serial.print(" ");
-	Serial.println(wrist_angle_d);
+	// Serial.print("Angles : ");
+	// Serial.print(base_angle_d);
+	// Serial.print(" ");
+	// Serial.print(shoulder_angle_d);
+	// Serial.print(" ");
+	// Serial.print(elbow_angle_d);
+	// Serial.print(" ");
+	// Serial.println(wrist_angle_d);
 
-	Motor1.write(base_angle_d + 180, servoSpeed); //anti negatives direction fix
-	Motor2.write(shoulder_angle_d, servoSpeed);
-	Motor3.write(180 - elbow_angle_d, servoSpeed); //diretion fix
-	Motor4.write(180 - wrist_angle_d, servoSpeed); //direction fix
+	float aantalgraden1 = mirrorM(base_angle_d + 180);
+	float aantalgraden2 = mirrorM(shoulder_angle_d);
+	float aantalgraden3 = mirrorM(180 - elbow_angle_d);
+	float aantalgraden4 = mirrorM(180 - wrist_angle_d);		
+
+	Motor1.write(aantalgraden1, servoSpeed); //anti negatives direction fix
+	Motor2.write(aantalgraden2, servoSpeed);
+	Motor3.write(aantalgraden3, servoSpeed); //diretion fix
+	Motor4.write(aantalgraden4, servoSpeed); //direction fix
 	return;
 }

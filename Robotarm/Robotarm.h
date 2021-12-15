@@ -11,13 +11,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#define BASE_HGT 51 //base height
-#define HUMERUS 122 //shoulder-to-elbow "bone"
-#define ULNA 125 //elbow-to-wrist "bone"
-#define GRIPPER 50 //gripper (incl.heavy duty wrist rotate mechanism) length "
 
-#define ftl(x) ((x)>=0?(long)((x)+0.5):(long)((x)-0.5)) //float to long conversion
-#define epsilon 0.00001
 
 class Robotarm {
     public:
