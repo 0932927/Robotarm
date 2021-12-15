@@ -651,14 +651,14 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	// Serial.print(" ");
 	// Serial.println(wrist_angle_d);
 
-	float aantalgraden1 = mirrorM(base_angle_d + 180);
+	float aantalgraden1 = mirrorM(base_angle_d + 180);  //anti negatives direction fix
 	float aantalgraden2 = mirrorM(shoulder_angle_d);
-	float aantalgraden3 = mirrorM(180 - elbow_angle_d);
-	float aantalgraden4 = mirrorM(180 - wrist_angle_d);		
+	float aantalgraden3 = mirrorM(180 - elbow_angle_d); //diretion fix
+	float aantalgraden4 = mirrorM(180 - wrist_angle_d);	//direction fix	
 
-	Motor1.write(aantalgraden1, servoSpeed); //anti negatives direction fix
+	Motor1.write(aantalgraden1, servoSpeed); 
 	Motor2.write(aantalgraden2, servoSpeed);
-	Motor3.write(aantalgraden3, servoSpeed); //diretion fix
-	Motor4.write(aantalgraden4, servoSpeed); //direction fix
+	Motor3.write(aantalgraden3, servoSpeed); 
+	Motor4.write(aantalgraden4, servoSpeed); 
 	return;
 }
