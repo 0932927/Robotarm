@@ -235,11 +235,11 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			float aantalgraden = mirrorM(55);
-			Motor2.write(aantalgraden, 30, true);
-			delay(500);
-			Motor4.write(155, 40, true);
-			delay(500);
-			Motor3.write(0, 40, true);
+			Motor2.write(aantalgraden, 30, false);
+			// delay(500);
+			Motor4.write(155, 40, false);
+			// delay(500);
+			Motor3.write(0, 40, false);
 			delay(500);
 			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -294,12 +294,12 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
-			Motor4.write(125, 40, true);
-			delay(500);
-			Motor3.write(45, 40, true);
-			delay(500);
+			Motor4.write(125, 40, false);
+			// delay(500);
+			Motor3.write(45, 40, false);
+			// delay(500);
 			float aantalgraden = mirrorM(40);
-			Motor2.write(aantalgraden, 35, true);
+			Motor2.write(aantalgraden, 35, false);
 			delay(500);
 			
 // ------------------------------------------
@@ -358,11 +358,11 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			float aantalgraden = mirrorM(75);
-			Motor2.write(aantalgraden, 30, true);
-			delay(500);
-			Motor3.write(0, 40, true);
-			delay(500);
-			Motor4.write(135, 40, true);
+			Motor2.write(aantalgraden, 30, false);
+			// delay(500);
+			Motor3.write(0, 40, false);
+			// delay(500);
+			Motor4.write(135, 40, false);
 			delay(500);
 			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -420,11 +420,11 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 			float aantalgraden = mirrorM(50);
-			Motor2.write(aantalgraden, 30, true);
-			delay(500);
-			Motor3.write(50, 40, true);
-			delay(500);
-			Motor4.write(115, 40, true);
+			Motor2.write(aantalgraden, 30, false);
+			// delay(500);
+			Motor3.write(50, 40, false);
+			// delay(500);
+			Motor4.write(115, 40, false);
 			delay(500);
 // ------------------------------------------
 		}
@@ -482,9 +482,9 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			float aantalgraden = mirrorM(80);
 			Motor2.write(aantalgraden, 30, false);
-			delay(500);
+			// delay(500);
 			Motor3.write(45, 40, false);
-			delay(500);
+			// delay(500);
 			Motor4.write(85, 40, false);
 			delay(500);
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -541,10 +541,10 @@ void Robotarm::naarPunt(char letter, char cijfer){
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 			Motor3.write(95, 30, false);
-			delay(500);
+			// delay(500);
 			float aantalgraden = mirrorM(45);
 			Motor2.write(aantalgraden, 30, false);
-			delay(500);
+			// delay(500);
 			Motor4.write(65, 30, false);
 			delay(500);
 // ------------------------------------------
