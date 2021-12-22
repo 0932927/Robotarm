@@ -1,15 +1,15 @@
-#define ledPin 13
 #define A 8
 #define B 9
 #define C 10
 #define D 11
-int x=0;
-int doOnce = 1;
-int angle = 0.0;
+int x=0, y=0;
+int angle = 0;
 int oneStepComplete=0;
 int stepperangleInt = 0;
 float stepperangle = 0;
 float input;
+int linksRechts = 0; // 1 is rechtsom 0 is linksom
+
 
 void setup(){
   pinMode(A,OUTPUT);
@@ -32,7 +32,6 @@ void setup(){
 }
 
 ISR(TIMER1_COMPA_vect)   {       // timer compare interrupt service routine
-  //digitalWrite(ledPin, digitalRead(ledPin) ^ 1);   // toggle LED pin
   onestep();
 }
 
@@ -50,26 +49,28 @@ void onestep(){
   // dit beteken 2048 steps in full step mode
   // wanner we deze functie 1 keer uitvoeren zetten we 4 steps 2048 / 4 = 512
   // dit betekent dat je dus 512 keer deze functie uitvoert voor een volledige rotatie
-  if(oneStepComplete <= degreeToSteps(angle)){
-    switch(x){
+  
+  if( (hoekverschil() > 0) && (linksRechts == 1 )){
+  //rechtsom
+    switch(y){
       case 0:
         write(1,0,0,0);
-        x++;
+        y++;
         break;
   
       case 1:
         write(0,1,0,0);
-        x++;
+        y++;
         break;
   
       case 2:
         write(0,0,1,0);
-        x++;
+        y++;
         break;
   
       case 3:
         write(0,0,0,1);
-        x = 0;
+        y = 0;
         oneStepComplete++; // per keer dat je hier komt is de motor 0,703125 gedraaid
         stepperangle = stepperangle + 0.703125;
         stepperangleInt = (int)stepperangle % 360;
@@ -80,41 +81,58 @@ void onestep(){
         break;
   
     }
+  }else if( (hoekverschil() > 0) && (linksRechts == 0 )){
+  //linksom
+    switch(x){
+      case 0:
+        write(0,0,0,1);
+        x++;
+        break;
+  
+      case 1:
+        write(0,0,1,0);
+        x++;
+        break;
+  
+      case 2:
+        write(0,1,0,0);
+        x++;
+        break;
+  
+      case 3:
+        write(1,0,0,0);
+        x = 0;
+        oneStepComplete++; // per keer dat je hier komt is de motor 0,703125 gedraaid
+        stepperangle = stepperangle - 0.703125;
+        stepperangleInt = (int)stepperangle % 360;
+        Serial.print("Stepper hoek float: ");
+        Serial.println(stepperangle);
+        Serial.print("Stepper hoek int: ");
+        Serial.println(stepperangleInt);
+        break;
+  
+    }
   }else{
     write(0,0,0,0);
+  } 
+}
+
+int hoekverschil(){
+  if(stepperangleInt < angle){
+    linksRechts = 1; // true is links false is rechts
+    //Serial.println("hoi");
+    return angle - stepperangleInt ;
+    
+  }else if(stepperangleInt > angle){
+    //Serial.println("doie");
+    linksRechts = 0;
+    return stepperangleInt - angle;  
+  } else if(stepperangleInt == angle){
+    linksRechts = 2;
   }
-  
-  
-}
-
-void onestepBasic(){
-  // half steps currently
-  write(1,0,0,0);
-  delay(5);
-  write(1,1,0,0);
-  delay(5);
-  write(0,1,0,0);
-  delay(5);
-  write(0,1,1,0);
-  delay(5);
-  write(0,0,1,0);
-  delay(5);
-  write(0,0,1,1);
-  delay(5);
-  write(0,0,0,1);
-  delay(5);
-  write(1,0,0,1);
-  delay(5);
-}
-
-int degreeToSteps(float hoek){
-  float degreePerStep = 360.0/512.0;
-  float numOfSteps = hoek/degreePerStep;
-  return (int)numOfSteps;
 }
 
 void loop(){
-
   if(Serial.available()){
     input = Serial.parseFloat();
     if (input != 0.0){
@@ -123,14 +141,4 @@ void loop(){
     }
     //hoek = (int)input;
   }
-
-//  if (doOnce==1){
-//    Serial.println("kak");
-//    for(int z=0; z<=512; z++){
-//      Serial.println("infor");
-//      onestepBasic();
-//      Serial.println(z);
-//    }
-//    doOnce = 0;
-//  }
 }
