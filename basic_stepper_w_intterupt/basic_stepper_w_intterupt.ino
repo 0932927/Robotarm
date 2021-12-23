@@ -2,6 +2,7 @@
 #define B 9
 #define C 10
 #define D 11
+
 int x=0, y=0;
 int angle = 0;
 int oneStepComplete=0;
@@ -20,18 +21,18 @@ void setup(){
   
   // initialize timer1 
   cli();         // disable all interrupts
-  TCCR1A = 0;
-  TCCR1B = 0;
-  TCNT1  = 0;
-  OCR1A = 16000000/256/400;            // compare match register 16MHz/prescaler/2Hz hz kan van 0-500
-  TCCR1B |= (1 << WGM12);   // CTC mode
-  TCCR1B |= (1 << CS12);    // 256 prescaler 
+  TCCR0A = 0;
+  TCCR0B = 0;
+  TCNT0  = 0;
+  OCR0A = 16000000/256/400;            // compare match register 16MHz/prescaler/2Hz hz kan van 0-500
+  TCCR0B |= (1 << WGM12);   // CTC mode
+  TCCR0B |= (1 << CS12);    // 256 prescaler 
   //TCCR1B |= (1 << CS10);    // CS12+ CS10=1024 prescaler 
-  TIMSK1 |= (1 << OCIE1A);  // enable timer compare interrupt
+  TIMSK0 |= (1 << OCIE1A);  // enable timer compare interrupt
   sei();            // enable all interrupts  
 }
 
-ISR(TIMER1_COMPA_vect)   {       // timer compare interrupt service routine
+ISR(TIMER0_COMPA_vect)   {       // timer compare interrupt service routine
   onestep();
 }
 

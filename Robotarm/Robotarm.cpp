@@ -4,13 +4,24 @@ void Robotarm::attach() {
     Motor1.attach(pin_Motor1);// base motor
     Motor2.attach(pin_Motor2);// op de base arm 1
     Motor3.attach(pin_Motor3);// arm2
-	Motor4.attach(pin_Motor4);// op servo
+	Motor4.attach(pin_Motor4);// op servo	
+
+	  cli();         // disable all interrupts
+  	TCCR0A = 0;
+  	TCCR0B = 0;
+  	TCNT0  = 0;
+  	OCR0A = 16000000/256/300;            // compare match register 16MHz/prescaler/2Hz hz kan van 0-500
+  	TCCR0B |= (1 << WGM12);   // CTC mode
+  	TCCR0B |= (1 << CS12);    // 256 prescaler 
+  	//TCCR0B |= (1 << CS10);    // CS12+ CS10=1024 prescaler 
+  	TIMSK0 |= (1 << OCIE1A);  // enable timer compare interrupt
+  	sei();
 }
 
 void Robotarm::HerstelServos()// om de arm naar de standaard posities terug te zetten
 {
-	Motor1.write(90, 30, true);// misschien is het niet nodig voor motor 1 omdat deze de base motor is
-	delay(1000);
+	// Motor1.write(90, 30, true);// misschien is het niet nodig voor motor 1 omdat deze de base motor is
+	// delay(1000);
 	Motor2.write(90, 30, true);
 	delay(500);
 	Motor3.write(90, 40, true);
@@ -89,8 +100,7 @@ void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeve
 //}
 
 void Robotarm::DraaiMotor1(uint8_t aantalgraden) {
-    Motor1.write(aantalgraden, 30, true);
-	return;
+    
 }
 
 void Robotarm::DraaiMotor2(int aantalgraden) {		
@@ -187,7 +197,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
 				Motor1.write(22.5, 30, true); //rotatie
-				delay(500);
+				delay(500); 
 			}
 			else if(letter=='C'){
 				Motor1.write(45, 30, true); //rotatie
@@ -661,4 +671,100 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	Motor3.write(aantalgraden3, servoSpeed); 
 	Motor4.write(aantalgraden4, servoSpeed); 
 	return;
+}
+
+void Robotarm::write(int a,int b,int c,int d){
+	digitalWrite(pin_stepperA,a);
+	digitalWrite(pin_stepperB,b);
+	digitalWrite(pin_stepperC,c);
+	digitalWrite(pin_stepperD,d);
+}
+
+void Robotarm::onestep(int angle){
+	
+// 512 keer deze functie is 360 graden gedraaid
+// stride angle 5.625/64 met een gear ratio van 1:64
+// 360/5.625 = 64 door gearbox krijg je 64*64 dus je hebt 4096 steps in half step mode
+// dit beteken 2048 steps in full step mode
+// wanner we deze functie 1 keer uitvoeren zetten we 4 steps 2048 / 4 = 512
+// dit betekent dat je dus 512 keer deze functie uitvoert voor een volledige rotatie
+
+	if( (hoekverschil(angle) > 0) && (linksRechtsStepper == 1 )){
+	//rechtsom
+		switch(q){
+			case 0:
+				write(1,0,0,0);
+				q++;
+				break;
+
+			case 1:
+				write(0,1,0,0);
+				q++;
+				break;
+
+			case 2:
+				write(0,0,1,0);
+				q++;
+				break;
+
+			case 3:
+				write(0,0,0,1);
+				q = 0;
+				stepperangle = stepperangle + 0.703125;
+				stepperangleInt = (int)stepperangle % 360;
+				// Serial.print("Stepper hoek float: ");
+				// Serial.println(stepperangle);
+				// Serial.print("Stepper hoek int: ");
+				// Serial.println(stepperangleInt);
+				break;
+			}
+
+	}else if( (hoekverschil(angle) > 0) && (linksRechtsStepper == 0 )){
+	//linksom
+		switch(p){
+			case 0:
+				write(0,0,0,1);
+				p++;
+				break;
+
+			case 1:
+				write(0,0,1,0);
+				p++;
+				break;
+
+			case 2:
+				write(0,1,0,0);
+				p++;
+				break;
+
+			case 3:
+				write(1,0,0,0);
+				p = 0;
+				stepperangle = stepperangle - 0.703125;
+				stepperangleInt = (int)stepperangle % 360;
+				// Serial.print("Stepper hoek float: ");
+				// Serial.println(stepperangle);
+				// Serial.print("Stepper hoek int: ");
+				// Serial.println(stepperangleInt);
+				break;
+
+			}
+		}else{
+			write(0,0,0,0);
+		} 
+}
+
+int Robotarm::hoekverschil(int angle){
+	if(stepperangleInt < angle){
+		linksRechtsStepper = 1; // 1 is rechts 0 is rechts
+		//Serial.println("hoi");
+		return angle - stepperangleInt ;
+		
+	}else if(stepperangleInt > angle){
+		//Serial.println("doie");
+		linksRechtsStepper = 0;
+		return stepperangleInt - angle;  
+	} else if(stepperangleInt == angle){
+		linksRechtsStepper = 2;
+	}
 }
