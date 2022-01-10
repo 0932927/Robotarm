@@ -1,6 +1,12 @@
 #include <Robotarm.h>
 Robotarm arm;
+
+ISR(TIMER0_COMPA_vect)   {       // timer compare interrupt service routine
+  arm.moveStepper(arm.stepperHoek);
+}
+
 float input;
+int once = 1;
 
 void setup()// Hier worden functies geplaatst die maar één keer worden uitgevoerd
 { 
@@ -10,7 +16,7 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   arm.attach();
   Serial.println("Herstel");
   arm.HerstelServos();// Zet de arm terug naar de oorspronkelijke positie
-  delay(500);
+//  delay(500);
 //  
 //  arm.Cijfer = '2'; // Veranderd het getal tussen de twee haakpunten
 //  arm.Letter = 'A'; // Veranderd de letter tussen de twee haakpunten
@@ -46,8 +52,15 @@ void loop()// Hier worden functies geplaatst die herhaald worden
 //  Serial.println(arm.stepperHoek);
 //  arm.DraaiMotor1(90);
 //  delay(500);
-  arm.DraaiMotor2(80);
-  delay(500);
+  arm.DraaiMotor2(75);
+  arm.DraaiMotor3(120);
+  arm.DraaiMotor4(20);
+  if (once){
+    arm.stepperHoek=90;
+    once = 0;
+  }
+  
+//  delay(500);
 //  arm.DraaiMotor3(90);
 //  delay(500);
 //  arm.DraaiMotor4(90);
@@ -75,10 +88,5 @@ if(Serial.available()){
     if (input != 0.0){
       arm.stepperHoek = input;
     }
-    //hoek = (int)input;
   }
-}
-
-ISR(TIMER0_COMPA_vect)   {       // timer compare interrupt service routine
-  arm.onestep(arm.stepperHoek);
 }

@@ -1,6 +1,5 @@
 #ifndef Robotarm_h
 #define Robotarm_h
-
 #define degToRad(angleInDegrees) ((angleInDegrees) * M_PI / 180.0)
 #define radToDeg(angleInRadians) ((angleInRadians) * 180.0 / M_PI)
 #include <Arduino.h>
@@ -14,9 +13,10 @@
 class Robotarm {
     public:
         void attach(); // Dit moet aangeroepen worden in void setup()
-		void vastePositie(int);// hier komt het Letter (1 of 2 of 3 ..ect) dan wordt bepaald welke x,y,z
+		void HerstelServos();
+		// void vastePositie(int);// hier komt het Letter (1 of 2 of 3 ..ect) dan wordt bepaald welke x,y,z
         void GaNaar(uint8_t, uint8_t);// Deze krijgen we van de Arduino sketch, we beginnen eerst met x en y
-		void BerekenAantalGraden(float, float);// De gekregen coordinaten in deze functie meegeven om de hoeken te bepalen
+		// void BerekenAantalGraden(float, float);// De gekregen coordinaten in deze functie meegeven om de hoeken te bepalen
         //void DraaiOnderkant(uint8_t);
         void DraaiMotor1(uint8_t);
         void DraaiMotor2(int);
@@ -24,15 +24,12 @@ class Robotarm {
 		void DraaiMotor4(uint8_t);
         void SluitKop();
         void OpenKop();
-        void AlsGroterDan(uint8_t, uint8_t);
-        void AlsKleinerDan(uint8_t, uint8_t);
-		void HerstelServos();
 		float mirrorM(float);
 		void dof2Move(float, float);
 		void naarPunt(char, char);
 		void circle_method( float, float, float, float, int);
-		void write(int a,int b,int c,int d);
-		void onestep(int angle);
+		void stepperwrite(int a,int b,int c,int d);
+		void moveStepper(int angle);
 		int hoekverschil(int angle);
 		//void Grijpen(); // Uncomment dit wanneer grijper is aangesloten
 		float X, Y, Z; // Dot zijn de eind posities

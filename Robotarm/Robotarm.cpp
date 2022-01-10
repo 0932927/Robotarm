@@ -30,57 +30,57 @@ void Robotarm::HerstelServos()// om de arm naar de standaard posities terug te z
 	delay(500);
 }
 
-void Robotarm::BerekenAantalGraden(float X,float Y)
-{
-	phi = 0.0;
-	phi = degToRad(phi); // zelf gedefinieerd in robotarm.h
+// void Robotarm::BerekenAantalGraden(float X,float Y)
+// {
+// 	phi = 0.0;
+// 	phi = degToRad(phi); // zelf gedefinieerd in robotarm.h
 
-	wx = X - Arm_3*cos(phi);
-	wy = Y - Arm_3*sin(phi);
+// 	wx = X - Arm_3*cos(phi);
+// 	wy = Y - Arm_3*sin(phi);
 
-	delta = pow(wx, 2)+ pow(wy, 2);
-	c2 = (delta - pow(Arm_1, 2) - pow(Arm_2, 2))/(2 * Arm_1 * Arm_2);
-	s2 = sqrt(1 - pow(c2,2));
-	theta_2 = atan2(s2, c2);
+// 	delta = pow(wx, 2)+ pow(wy, 2);
+// 	c2 = (delta - pow(Arm_1, 2) - pow(Arm_2, 2))/(2 * Arm_1 * Arm_2);
+// 	s2 = sqrt(1 - pow(c2,2));
+// 	theta_2 = atan2(s2, c2);
 
-	s1 = ((Arm_1+Arm_2*c2)*wy - Arm_2*s2*wx)/delta;
-	c1 = ((Arm_1+Arm_2*c2)*wx + Arm_2*s2*wy)/delta;
-	theta_1 = atan2(s1,c1);
-	theta_3 = phi-theta_1-theta_2;
+// 	s1 = ((Arm_1+Arm_2*c2)*wy - Arm_2*s2*wx)/delta;
+// 	c1 = ((Arm_1+Arm_2*c2)*wx + Arm_2*s2*wy)/delta;
+// 	theta_1 = atan2(s1,c1);
+// 	theta_3 = phi-theta_1-theta_2;
 
-	Hoek1 = radToDeg(theta_1);
-	Hoek2 = radToDeg(theta_2);
-	Hoek3 = radToDeg(theta_3);
-}
+// 	Hoek1 = radToDeg(theta_1);
+// 	Hoek2 = radToDeg(theta_2);
+// 	Hoek3 = radToDeg(theta_3);
+// }
 
-//
-void Robotarm::vastePositie(int Getal)
-{
-	if (Getal == 1)
-	{
-		Motor3.write(-45, 30, true);
-		return;
-		//BerekenAantalGraden(float, float) // hier worden de x en y meegegeven afhankelijjk van welke getal is gekozen
-	}
-	else if(Getal == 2)
-	{
-		Motor3.write(45, 30, true);
-		return;
-		//BerekenAantalGraden(float, float)
-	}
-	else if(Getal == 3)
-	{
-		Motor3.write(70, 30, true);
-		return;
-		//BerekenAantalGraden(float, float)
-	}
-	else if(Getal == 4)
-	{
-		Motor3.write(-100, 30, true);
-		return;
-		//BerekenAantalGraden(float, float)
-	}
-}	
+
+// void Robotarm::vastePositie(int Getal)
+// {
+// 	if (Getal == 1)
+// 	{
+// 		Motor3.write(-45, 30, true);
+// 		return;
+// 		//BerekenAantalGraden(float, float) // hier worden de x en y meegegeven afhankelijjk van welke getal is gekozen
+// 	}
+// 	else if(Getal == 2)
+// 	{
+// 		Motor3.write(45, 30, true);
+// 		return;
+// 		//BerekenAantalGraden(float, float)
+// 	}
+// 	else if(Getal == 3)
+// 	{
+// 		Motor3.write(70, 30, true);
+// 		return;
+// 		//BerekenAantalGraden(float, float)
+// 	}
+// 	else if(Getal == 4)
+// 	{
+// 		Motor3.write(-100, 30, true);
+// 		return;
+// 		//BerekenAantalGraden(float, float)
+// 	}
+// }	
 
 void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeven worden, eerst alleen x en y
 {
@@ -100,20 +100,23 @@ void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeve
 //}
 
 void Robotarm::DraaiMotor1(uint8_t aantalgraden) {
-    
+    stepperHoek = aantalgraden;
 }
 
 void Robotarm::DraaiMotor2(int aantalgraden) {		
 	aantalgraden = mirrorM(aantalgraden);
     Motor2.write(aantalgraden, 30, true);
+	delay(500);
 }
 
 void Robotarm::DraaiMotor3(uint8_t aantalgraden) {
     Motor3.write(aantalgraden, 30, true);
+	delay(500);
 }
 
 void Robotarm::DraaiMotor4(uint8_t aantalgraden) {
     Motor4.write(aantalgraden, 30, true);
+	delay(500);
 }
 
 /*---------------Uncomment dit wanneer grijper is aangesloten-------------------
@@ -134,22 +137,6 @@ void Robotarm::Grijpen(){
 }
 Omdat we nog geen grijper hebben is deze code ook nog niet getest, dit is simpel code voor het grijpen we gaan ervan uit dat het werkt
 */
-
-void Robotarm::SluitKop() {
-	//DraaiMotor5 wanneer deze wordt aangesloten voor de kop
-}
-
-void Robotarm::OpenKop() {
-	//DraaiMotor5 wanneer deze wordt aangesloten voor de kop
-}
-
-void Robotarm::AlsGroterDan(uint8_t a, uint8_t b) {
-
-}
-
-void Robotarm::AlsKleinerDan(uint8_t a, uint8_t b) {
-
-}
 
 float Robotarm::mirrorM(float hoek){
 	//als de hoek kleiner is dan 90 moet de mirror groter zijn dan 90
@@ -673,14 +660,14 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	return;
 }
 
-void Robotarm::write(int a,int b,int c,int d){
+void Robotarm::stepperwrite(int a,int b,int c,int d){
 	digitalWrite(pin_stepperA,a);
 	digitalWrite(pin_stepperB,b);
 	digitalWrite(pin_stepperC,c);
 	digitalWrite(pin_stepperD,d);
 }
 
-void Robotarm::onestep(int angle){
+void Robotarm::moveStepper(int angle){
 	
 // 512 keer deze functie is 360 graden gedraaid
 // stride angle 5.625/64 met een gear ratio van 1:64
@@ -693,22 +680,22 @@ void Robotarm::onestep(int angle){
 	//rechtsom
 		switch(q){
 			case 0:
-				write(1,0,0,0);
+				stepperwrite(1,0,0,0);
 				q++;
 				break;
 
 			case 1:
-				write(0,1,0,0);
+				stepperwrite(0,1,0,0);
 				q++;
 				break;
 
 			case 2:
-				write(0,0,1,0);
+				stepperwrite(0,0,1,0);
 				q++;
 				break;
 
 			case 3:
-				write(0,0,0,1);
+				stepperwrite(0,0,0,1);
 				q = 0;
 				stepperangle = stepperangle + 0.703125;
 				stepperangleInt = (int)stepperangle % 360;
@@ -723,22 +710,22 @@ void Robotarm::onestep(int angle){
 	//linksom
 		switch(p){
 			case 0:
-				write(0,0,0,1);
+				stepperwrite(0,0,0,1);
 				p++;
 				break;
 
 			case 1:
-				write(0,0,1,0);
+				stepperwrite(0,0,1,0);
 				p++;
 				break;
 
 			case 2:
-				write(0,1,0,0);
+				stepperwrite(0,1,0,0);
 				p++;
 				break;
 
 			case 3:
-				write(1,0,0,0);
+				stepperwrite(1,0,0,0);
 				p = 0;
 				stepperangle = stepperangle - 0.703125;
 				stepperangleInt = (int)stepperangle % 360;
@@ -750,7 +737,7 @@ void Robotarm::onestep(int angle){
 
 			}
 		}else{
-			write(0,0,0,0);
+			stepperwrite(0,0,0,0);
 		} 
 }
 
