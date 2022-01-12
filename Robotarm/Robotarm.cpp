@@ -104,7 +104,7 @@ void Robotarm::DraaiMotor1(uint8_t aantalgraden) {
 }
 
 void Robotarm::DraaiMotor2(int aantalgraden) {		
-	aantalgraden = mirrorM(aantalgraden);
+	// aantalgraden = mirrorM(aantalgraden);
     Motor2.write(aantalgraden, 30, true);
 	delay(500);
 }
@@ -183,52 +183,52 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	if(cijfer == '1'){
 		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
-				Motor1.write(22.5, 30, true); //rotatie
-				delay(500); 
+				stepperHoek =22.5; //rotatie
+				 
 			}
 			else if(letter=='C'){
-				Motor1.write(45, 30, true); //rotatie
-				delay(500);
+				stepperHoek =45; //rotatie
+				
 			}
 			else if(letter=='E'){
-				Motor1.write(67.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =67.5; //rotatie
+				
 			}
 			else if(letter=='G'){
-				Motor1.write(112.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =112.5; //rotatie
+				
 			}
 			else if(letter=='I'){
-				Motor1.write(135, 30, true); //rotatie
-				delay(500);
+				stepperHoek =135; //rotatie
+				
 			}
 			else if(letter=='K'){
-				Motor1.write(157.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =157.5; //rotatie
+							
 			}
 			else if(letter=='M'){
-				Motor1.write(202.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =202.5; //rotatie
+				
 			}
 			else if(letter=='O'){
-				Motor1.write(225, 30, true); //rotatie
-				delay(500);
+				stepperHoek =225; //rotatie
+				
 			}
 			else if(letter=='Q'){
-				Motor1.write(247.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =247.5; //rotatie
+				
 			}
 			else if(letter=='S'){
-				Motor1.write(292.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =292.5; //rotatie
+				
 			}
 			else if(letter=='U'){
-				Motor1.write(315, 30, true); //rotatie
-				delay(500);
+				stepperHoek =315; //rotatie
+				
 			}
 			else if(letter=='W'){
-				Motor1.write(337.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =337.5; //rotatie
+				
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(55, 30, false);
@@ -242,52 +242,52 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		}
 		else if(cirkel2.indexOf(letter) >= 0){
 			if(letter=='B'){
-				Motor1.write(22.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =22.5; //rotatie
+				
 			}
 			else if(letter=='D'){
-				Motor1.write(45, 30, true); //rotatie
-				delay(500);
+				stepperHoek =45; //rotatie
+				
 			}
 			else if(letter=='F'){
-				Motor1.write(67.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =67.5; //rotatie
+				
 			}
 			else if(letter=='H'){
-				Motor1.write(112.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =112.5; //rotatie
+				
 			}
 			else if(letter=='J'){
-				Motor1.write(135, 30, true); //rotatie
-				delay(500);
+				stepperHoek =135; //rotatie
+				
 			}
 			else if(letter=='L'){
-				Motor1.write(157.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =157.5; //rotatie
+							
 			}
 			else if(letter=='N'){
-				Motor1.write(202.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =202.5; //rotatie
+				
 			}
 			else if(letter=='P'){
-				Motor1.write(225, 30, true); //rotatie
-				delay(500);
+				stepperHoek =225; //rotatie
+				
 			}
 			else if(letter=='R'){
-				Motor1.write(247.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =247.5; //rotatie
+							
 			}
 			else if(letter=='T'){
-				Motor1.write(292.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =292.5; //rotatie
+				
 			}
 			else if(letter=='V'){
-				Motor1.write(315, 30, true); //rotatie
-				delay(500);
+				stepperHoek =315; //rotatie
+				
 			}
 			else if(letter=='X'){
-				Motor1.write(337.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =337.5; //rotatie
+				
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor4.write(125, 40, false);
@@ -304,52 +304,52 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		Serial.println("Ik ben in cijfer 2");
 		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
-				Motor1.write(22.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =22.5; //rotatie
+				 
 			}
 			else if(letter=='C'){
-				Motor1.write(45, 30, true); //rotatie
-				delay(500);
+				stepperHoek =45; //rotatie
+				
 			}
 			else if(letter=='E'){
-				Motor1.write(67.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =67.5; //rotatie
+				
 			}
 			else if(letter=='G'){
-				Motor1.write(112.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =112.5; //rotatie
+				
 			}
 			else if(letter=='I'){
-				Motor1.write(135, 30, true); //rotatie
-				delay(500);
+				stepperHoek =135; //rotatie
+				
 			}
 			else if(letter=='K'){
-				Motor1.write(157.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =157.5; //rotatie
+							
 			}
 			else if(letter=='M'){
-				Motor1.write(202.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =202.5; //rotatie
+				
 			}
 			else if(letter=='O'){
-				Motor1.write(225, 30, true); //rotatie
-				delay(500);
+				stepperHoek =225; //rotatie
+				
 			}
 			else if(letter=='Q'){
-				Motor1.write(247.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =247.5; //rotatie
+				
 			}
 			else if(letter=='S'){
-				Motor1.write(292.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =292.5; //rotatie
+				
 			}
 			else if(letter=='U'){
-				Motor1.write(315, 30, true); //rotatie
-				delay(500);
+				stepperHoek =315; //rotatie
+				
 			}
 			else if(letter=='W'){
-				Motor1.write(337.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =337.5; //rotatie
+				
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(75, 30, false);
@@ -364,53 +364,52 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		else if(cirkel2.indexOf(letter) >= 0){
 			Serial.println("Ik ben in cijfer 2");
 			if(letter=='B'){
-				Serial.println("Ik ben in cijfer 2 punt B");
-				Motor1.write(22.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =22.5; //rotatie
+				
 			}
 			else if(letter=='D'){
-				Motor1.write(45, 30, true); //rotatie
-				delay(500);
+				stepperHoek =45; //rotatie
+				
 			}
 			else if(letter=='F'){
-				Motor1.write(67.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =67.5; //rotatie
+				
 			}
 			else if(letter=='H'){
-				Motor1.write(112.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =112.5; //rotatie
+				
 			}
 			else if(letter=='J'){
-				Motor1.write(135, 30, true); //rotatie
-				delay(500);
+				stepperHoek =135; //rotatie
+				
 			}
 			else if(letter=='L'){
-				Motor1.write(157.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =157.5; //rotatie
+							
 			}
 			else if(letter=='N'){
-				Motor1.write(202.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =202.5; //rotatie
+				
 			}
 			else if(letter=='P'){
-				Motor1.write(225, 30, true); //rotatie
-				delay(500);
+				stepperHoek =225; //rotatie
+				
 			}
 			else if(letter=='R'){
-				Motor1.write(247.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =247.5; //rotatie
+							
 			}
 			else if(letter=='T'){
-				Motor1.write(292.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =292.5; //rotatie
+				
 			}
 			else if(letter=='V'){
-				Motor1.write(315, 30, true); //rotatie
-				delay(500);
+				stepperHoek =315; //rotatie
+				
 			}
 			else if(letter=='X'){
-				Motor1.write(337.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =337.5; //rotatie
+				
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(50, 30, false);
@@ -425,52 +424,52 @@ void Robotarm::naarPunt(char letter, char cijfer){
 	else if(cijfer == '3'){
 		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
-				Motor1.write(22.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =22.5; //rotatie
+				 
 			}
 			else if(letter=='C'){
-				Motor1.write(45, 30, true); //rotatie
-				delay(500);
+				stepperHoek =45; //rotatie
+				
 			}
 			else if(letter=='E'){
-				Motor1.write(67.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =67.5; //rotatie
+				
 			}
 			else if(letter=='G'){
-				Motor1.write(112.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =112.5; //rotatie
+				
 			}
 			else if(letter=='I'){
-				Motor1.write(135, 30, true); //rotatie
-				delay(500);
+				stepperHoek =135; //rotatie
+				
 			}
 			else if(letter=='K'){
-				Motor1.write(157.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =157.5; //rotatie
+							
 			}
 			else if(letter=='M'){
-				Motor1.write(202.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =202.5; //rotatie
+				
 			}
 			else if(letter=='O'){
-				Motor1.write(225, 30, true); //rotatie
-				delay(500);
+				stepperHoek =225; //rotatie
+				
 			}
 			else if(letter=='Q'){
-				Motor1.write(247.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =247.5; //rotatie
+				
 			}
 			else if(letter=='S'){
-				Motor1.write(292.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =292.5; //rotatie
+				
 			}
 			else if(letter=='U'){
-				Motor1.write(315, 30, true); //rotatie
-				delay(500);
+				stepperHoek =315; //rotatie
+				
 			}
 			else if(letter=='W'){
-				Motor1.write(337.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =337.5; //rotatie
+				
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			Motor2.write(80, 30, false);
@@ -483,52 +482,52 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		}
 		else if(cirkel2.indexOf(letter) >= 0){
 			if(letter=='B'){
-				Motor1.write(22.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =22.5; //rotatie
+				
 			}
 			else if(letter=='D'){
-				Motor1.write(45, 30, true); //rotatie
-				delay(500);
+				stepperHoek =45; //rotatie
+				
 			}
 			else if(letter=='F'){
-				Motor1.write(67.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =67.5; //rotatie
+				
 			}
 			else if(letter=='H'){
-				Motor1.write(112.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =112.5; //rotatie
+				
 			}
 			else if(letter=='J'){
-				Motor1.write(135, 30, true); //rotatie
-				delay(500);
+				stepperHoek =135; //rotatie
+				
 			}
 			else if(letter=='L'){
-				Motor1.write(157.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =157.5; //rotatie
+							
 			}
 			else if(letter=='N'){
-				Motor1.write(202.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =202.5; //rotatie
+				
 			}
 			else if(letter=='P'){
-				Motor1.write(225, 30, true); //rotatie
-				delay(500);
+				stepperHoek =225; //rotatie
+				
 			}
 			else if(letter=='R'){
-				Motor1.write(247.5, 30, true); //rotatie
-				delay(500);			
+				stepperHoek =247.5; //rotatie
+							
 			}
 			else if(letter=='T'){
-				Motor1.write(292.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =292.5; //rotatie
+				
 			}
 			else if(letter=='V'){
-				Motor1.write(315, 30, true); //rotatie
-				delay(500);
+				stepperHoek =315; //rotatie
+				
 			}
 			else if(letter=='X'){
-				Motor1.write(337.5, 30, true); //rotatie
-				delay(500);
+				stepperHoek =337.5; //rotatie
+				
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -643,11 +642,11 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	// Serial.println(wrist_angle_d);
 
 	float aantalgraden1 = mirrorM(base_angle_d + 180);  //anti negatives direction fix
-	float aantalgraden2 = mirrorM(shoulder_angle_d);
+	float aantalgraden2 = shoulder_angle_d;
 	float aantalgraden3 = mirrorM(180 - elbow_angle_d); //diretion fix
 	float aantalgraden4 = mirrorM(180 - wrist_angle_d);	//direction fix	
 
-	Motor1.write(aantalgraden1, servoSpeed); 
+	stepperHoek = aantalgraden1; 
 	Motor2.write(aantalgraden2, servoSpeed);
 	Motor3.write(aantalgraden3, servoSpeed); 
 	Motor4.write(aantalgraden4, servoSpeed); 
