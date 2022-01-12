@@ -231,8 +231,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			float aantalgraden = mirrorM(55);
-			Motor2.write(aantalgraden, 30, false);
+			Motor2.write(55, 30, false);
 			// delay(500);
 			Motor4.write(155, 40, false);
 			// delay(500);
@@ -295,8 +294,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			// delay(500);
 			Motor3.write(45, 40, false);
 			// delay(500);
-			float aantalgraden = mirrorM(40);
-			Motor2.write(aantalgraden, 35, false);
+			Motor2.write(40, 35, false);
 			delay(500);
 			
 // ------------------------------------------
@@ -354,8 +352,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			float aantalgraden = mirrorM(75);
-			Motor2.write(aantalgraden, 30, false);
+			Motor2.write(75, 30, false);
 			// delay(500);
 			Motor3.write(0, 40, false);
 			// delay(500);
@@ -416,8 +413,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
-			float aantalgraden = mirrorM(50);
-			Motor2.write(aantalgraden, 30, false);
+			Motor2.write(50, 30, false);
 			// delay(500);
 			Motor3.write(50, 40, false);
 			// delay(500);
@@ -477,8 +473,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 				delay(500);
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
-			float aantalgraden = mirrorM(80);
-			Motor2.write(aantalgraden, 30, false);
+			Motor2.write(80, 30, false);
 			// delay(500);
 			Motor3.write(45, 40, false);
 			// delay(500);
@@ -539,8 +534,7 @@ void Robotarm::naarPunt(char letter, char cijfer){
 
 			Motor3.write(95, 30, false);
 			// delay(500);
-			float aantalgraden = mirrorM(45);
-			Motor2.write(aantalgraden, 30, false);
+			Motor2.write(45, 30, false);
 			// delay(500);
 			Motor4.write(65, 30, false);
 			delay(500);
