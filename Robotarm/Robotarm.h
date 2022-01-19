@@ -46,8 +46,9 @@ class Robotarm {
 		int pin_stepperB = 9;
 		int pin_stepperC = 10;
 		int pin_stepperD = 11;
-		float stepperangle = 0;
+		double stepperangle = 0;
 		int q=0, p=0;
+		int stepperKlaar = 0;
 
     private:
 		int pin_Motor1 = 12;// Dig pin 1 we beginnen bij 2 omdat 0 en 1 ook TX en RX zij voor UART. De servo krijgt telkens een schok voor dat de beweging wordt uitgevoerd
