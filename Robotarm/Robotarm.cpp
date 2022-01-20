@@ -6,7 +6,7 @@ void Robotarm::attach() {
     Motor3.attach(pin_Motor3);// arm2
 	Motor4.attach(pin_Motor4);// op servo	
 
-	  cli();         // disable all interrupts
+	cli();         // disable all interrupts
   	TCCR0A = 0;
   	TCCR0B = 0;
   	TCNT0  = 0;
@@ -20,102 +20,27 @@ void Robotarm::attach() {
 
 void Robotarm::HerstelServos()// om de arm naar de standaard posities terug te zetten
 {
-	// Motor1.write(90, 30, true);// misschien is het niet nodig voor motor 1 omdat deze de base motor is
-	// delay(1000);
 	Motor2.write(90, 30, true);
-	//delay(500);
 	Motor3.write(90, 30, true);
-	//delay(500);
 	Motor4.write(90, 30, true);
-	//delay(2000);
 	stepperHoek = 1;
 }
 
-// void Robotarm::BerekenAantalGraden(float X,float Y)
-// {
-// 	phi = 0.0;
-// 	phi = degToRad(phi); // zelf gedefinieerd in robotarm.h
-
-// 	wx = X - Arm_3*cos(phi);
-// 	wy = Y - Arm_3*sin(phi);
-
-// 	delta = pow(wx, 2)+ pow(wy, 2);
-// 	c2 = (delta - pow(Arm_1, 2) - pow(Arm_2, 2))/(2 * Arm_1 * Arm_2);
-// 	s2 = sqrt(1 - pow(c2,2));
-// 	theta_2 = atan2(s2, c2);
-
-// 	s1 = ((Arm_1+Arm_2*c2)*wy - Arm_2*s2*wx)/delta;
-// 	c1 = ((Arm_1+Arm_2*c2)*wx + Arm_2*s2*wy)/delta;
-// 	theta_1 = atan2(s1,c1);
-// 	theta_3 = phi-theta_1-theta_2;
-
-// 	Hoek1 = radToDeg(theta_1);
-// 	Hoek2 = radToDeg(theta_2);
-// 	Hoek3 = radToDeg(theta_3);
-// }
-
-
-// void Robotarm::vastePositie(int Getal)
-// {
-// 	if (Getal == 1)
-// 	{
-// 		Motor3.write(-45, 30, true);
-// 		return;
-// 		//BerekenAantalGraden(float, float) // hier worden de x en y meegegeven afhankelijjk van welke getal is gekozen
-// 	}
-// 	else if(Getal == 2)
-// 	{
-// 		Motor3.write(45, 30, true);
-// 		return;
-// 		//BerekenAantalGraden(float, float)
-// 	}
-// 	else if(Getal == 3)
-// 	{
-// 		Motor3.write(70, 30, true);
-// 		return;
-// 		//BerekenAantalGraden(float, float)
-// 	}
-// 	else if(Getal == 4)
-// 	{
-// 		Motor3.write(-100, 30, true);
-// 		return;
-// 		//BerekenAantalGraden(float, float)
-// 	}
-// }	
-
-void Robotarm::GaNaar(uint8_t x, uint8_t y) //coordinaten moeten hier doorgegeven worden, eerst alleen x en y
-{
-	//Motor1.write();
-	//delay(500);
-	//Motor2.write();
-	//delay(500);
-	//Motor3.write();
-	//delay(500);
-	//Motor4.write();
-	//(500);
-}
-
-//void Robotarm::DraaiOnderkant(uint8_t aantalgraden) Deze functie is hetzelfde als draarmotor 1 want motor1 wordt in de base geplaatst
-//{
-
-//}
-
-void Robotarm::DraaiMotor1(uint8_t aantalgraden) {
+void Robotarm::DraaiMotor1(uint8_t aantalgraden) {//functie om de base stepper te draaien
     stepperHoek = aantalgraden;
 }
 
-void Robotarm::DraaiMotor2(int aantalgraden) {		
-	// aantalgraden = mirrorM(aantalgraden);
+void Robotarm::DraaiMotor2(int aantalgraden) {//functie om de 2e servo te draaien(eerste armdeel)		
     Motor2.write(aantalgraden, 30, true);
 	delay(500);
 }
 
-void Robotarm::DraaiMotor3(uint8_t aantalgraden) {
+void Robotarm::DraaiMotor3(uint8_t aantalgraden) {//functie om de 3e servo te draaien(2e armdeel)
     Motor3.write(aantalgraden, 30, true);
 	delay(500);
 }
 
-void Robotarm::DraaiMotor4(uint8_t aantalgraden) {
+void Robotarm::DraaiMotor4(uint8_t aantalgraden) {//functie om de 4e servo te draaien (kop bewegen)
     Motor4.write(aantalgraden, 30, true);
 	delay(500);
 }
@@ -155,31 +80,31 @@ float Robotarm::mirrorM(float hoek){
 	
 }
 
-void Robotarm::dof2Move(float X, float Y){
-	//dit is de 2 DOF versie van de inverse kinematica
-	if(Y>X || Y==X){
-		hoek2dof2 = acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
-		hoek1dof2 = atan(Y/X) - atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
+// //Hieronder een functie voor een 2 DOF robot met inverse kinematica, misschien handig voor uitbreiding van de robot voor in de toekomst
+// void Robotarm::dof2Move(float X, float Y){
+// 	//dit is de 2 DOF versie van de inverse kinematica
+// 	if(Y>X || Y==X){
+// 		hoek2dof2 = acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
+// 		hoek1dof2 = atan(Y/X) - atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
 		
-		hoek2dof2 = radToDeg(hoek2dof2);
-		hoek1dof2 = radToDeg(hoek1dof2);
-	} else{
-		hoek2dof2 = -acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
-		hoek1dof2 = atan(Y/X) + atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
+// 		hoek2dof2 = radToDeg(hoek2dof2);
+// 		hoek1dof2 = radToDeg(hoek1dof2);
+// 	} else{
+// 		hoek2dof2 = -acos( ( pow(X,2) + pow(Y,2) - pow(Arm_1,2) - pow(Arm_2dof2 , 2) ) / ( 2 * Arm_1 * Arm_2dof2 ) );
+// 		hoek1dof2 = atan(Y/X) + atan( Arm_2dof2 * hoek2dof2 ) / (Arm_1 + cos(hoek2dof2)  * Arm_2dof2 ) ;
 		
-		hoek2dof2 = radToDeg(hoek2dof2);
-		hoek1dof2 = radToDeg(hoek1dof2);
-	}
-}
-	//char Cijfer_str[1]; //Dit was bedoeld om int om te zetten naar string
-	//sprintf(Cijfer_str, "%f", Cijfer);
+// 		hoek2dof2 = radToDeg(hoek2dof2);
+// 		hoek1dof2 = radToDeg(hoek1dof2);
+// 	}
+// }
+
 	
-/*Functie naarPunt is bedoeld om vaste posities op een grafiek te bereiken
+/*Functie naarPunt is bedoeld om vaste posities op een grid te bereiken
 alle vaste posities zijn gedefinieerd in de code, de leerling dient alleen een locatie te kiezen
-Bijvoorbeeld: Locatie A hoogte 1, locatie A hoogte 2 locatie A hoogte 3 elke letter heeft 3 niveaus*/
-	
+Bijvoorbeeld: Locatie A hoogte 1, locatie A hoogte 2 locatie A hoogte 3 elke letter heeft 3 niveaus
+Het cijfer staat voor de hoogte van de locatie en de letter voor de locatie*/
 void Robotarm::naarPunt(char letter, char cijfer){
-	String cirkel1 = "ACEGIKMOQSUW"; //P.S:(''): dit wordt gezien als een char en ("") wordt gezien als een const char.
+	String cirkel1 = "ACEGIKMOQSUW"; //P.S:(''): dit wordt gezien als een char en ("") wordt gezien als een string.
 	String cirkel2 = "BDFHJLNPRTVX";
 	if(cijfer == '1'){
 		if(cirkel1.indexOf(letter) >= 0){
@@ -233,197 +158,146 @@ void Robotarm::naarPunt(char letter, char cijfer){
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if (stepperKlaar == 1){
-			Motor2.write(55, 30, false);
-			// delay(500);
-			Motor4.write(155, 40, false);
-			// delay(500);
-			Motor3.write(0, 40, false);
-			//delay(500);
+			Motor2.write(55,  30, false);
+			Motor4.write(155, 30, false);
+			Motor3.write(0,   30, false);
 		}
-			
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) >= 0){
 			if(letter=='B'){
 				stepperHoek =22.5; //rotatie
-				
 			}
 			else if(letter=='D'){
 				stepperHoek =45; //rotatie
-				
 			}
 			else if(letter=='F'){
 				stepperHoek =67.5; //rotatie
-				
 			}
 			else if(letter=='H'){
 				stepperHoek =112.5; //rotatie
-				
 			}
 			else if(letter=='J'){
 				stepperHoek =135; //rotatie
-				
 			}
 			else if(letter=='L'){
 				stepperHoek =157.5; //rotatie
-							
 			}
 			else if(letter=='N'){
 				stepperHoek =202.5; //rotatie
-				
 			}
 			else if(letter=='P'){
 				stepperHoek =225; //rotatie
-				
 			}
 			else if(letter=='R'){
 				stepperHoek =247.5; //rotatie
-							
 			}
 			else if(letter=='T'){
 				stepperHoek =292.5; //rotatie
-				
 			}
 			else if(letter=='V'){
 				stepperHoek =315; //rotatie
-				
 			}
 			else if(letter=='X'){
 				stepperHoek =337.5; //rotatie
-				
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if (stepperKlaar == 1){	
-			Motor4.write(125, 40, false);
-			// delay(500);
-			Motor3.write(45, 40, false);
-			// delay(500);
-			Motor2.write(40, 35, false);
-			//delay(500);
+			Motor4.write(125, 30, false);
+			Motor3.write(45,  30, false);
+			Motor2.write(40,  30, false);
 		}	
 // ------------------------------------------
 		}
 	}
 	else if(cijfer == '2'){
-		Serial.println("Ik ben in cijfer 2");
 		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
 				stepperHoek =22.5; //rotatie
-				 
 			}
 			else if(letter=='C'){
 				stepperHoek =45; //rotatie
-				
 			}
 			else if(letter=='E'){
 				stepperHoek =67.5; //rotatie
-				
 			}
 			else if(letter=='G'){
 				stepperHoek =112.5; //rotatie
-				
 			}
 			else if(letter=='I'){
 				stepperHoek =135; //rotatie
-				
 			}
 			else if(letter=='K'){
 				stepperHoek =157.5; //rotatie
-							
 			}
 			else if(letter=='M'){
 				stepperHoek =202.5; //rotatie
-				
 			}
 			else if(letter=='O'){
 				stepperHoek =225; //rotatie
-				
 			}
 			else if(letter=='Q'){
 				stepperHoek =247.5; //rotatie
-				
 			}
 			else if(letter=='S'){
 				stepperHoek =292.5; //rotatie
-				
 			}
 			else if(letter=='U'){
 				stepperHoek =315; //rotatie
-				
 			}
 			else if(letter=='W'){
 				stepperHoek =337.5; //rotatie
-				
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if (stepperKlaar == 1){	
-			Motor2.write(75, 30, false);
-			// delay(500);
-			Motor3.write(0, 40, false);
-			// delay(500);
-			Motor4.write(135, 40, false);
-			//delay(500);
+			Motor2.write(75,  30, false);
+			Motor3.write(0,   30, false);
+			Motor4.write(135, 30, false);
 		}	
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) >= 0){
-			Serial.println("Ik ben in cijfer 2");
 			if(letter=='B'){
 				stepperHoek =22.5; //rotatie
-				
 			}
 			else if(letter=='D'){
 				stepperHoek =45; //rotatie
-				
 			}
 			else if(letter=='F'){
 				stepperHoek =67.5; //rotatie
-				
 			}
 			else if(letter=='H'){
 				stepperHoek =112.5; //rotatie
-				
 			}
 			else if(letter=='J'){
 				stepperHoek =135; //rotatie
-				
 			}
 			else if(letter=='L'){
 				stepperHoek =157.5; //rotatie
-							
 			}
 			else if(letter=='N'){
 				stepperHoek =202.5; //rotatie
-				
 			}
 			else if(letter=='P'){
 				stepperHoek =225; //rotatie
-				
 			}
 			else if(letter=='R'){
 				stepperHoek =247.5; //rotatie
-							
 			}
 			else if(letter=='T'){
 				stepperHoek =292.5; //rotatie
-				
 			}
 			else if(letter=='V'){
 				stepperHoek =315; //rotatie
-				
 			}
 			else if(letter=='X'){
 				stepperHoek =337.5; //rotatie
-				
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if (stepperKlaar == 1){	
-			Motor2.write(50, 30, false);
-			// delay(500);
-			Motor3.write(50, 40, false);
-			// delay(500);
-			Motor4.write(115, 40, false);
-			//delay(500);
+			Motor2.write(50,  30, false);
+			Motor3.write(50,  30, false);
+			Motor4.write(115, 30, false);
 		}
 // ------------------------------------------
 		}
@@ -432,120 +306,90 @@ void Robotarm::naarPunt(char letter, char cijfer){
 		if(cirkel1.indexOf(letter) >= 0){
 			if(letter=='A'){
 				stepperHoek =22.5; //rotatie
-				 
 			}
 			else if(letter=='C'){
 				stepperHoek =45; //rotatie
-				
 			}
 			else if(letter=='E'){
 				stepperHoek =67.5; //rotatie
-				
 			}
 			else if(letter=='G'){
 				stepperHoek =112.5; //rotatie
-				
 			}
 			else if(letter=='I'){
 				stepperHoek =135; //rotatie
-				
 			}
 			else if(letter=='K'){
 				stepperHoek =157.5; //rotatie
-							
 			}
 			else if(letter=='M'){
 				stepperHoek =202.5; //rotatie
-				
 			}
 			else if(letter=='O'){
 				stepperHoek =225; //rotatie
-				
 			}
 			else if(letter=='Q'){
 				stepperHoek =247.5; //rotatie
-				
 			}
 			else if(letter=='S'){
 				stepperHoek =292.5; //rotatie
-				
 			}
 			else if(letter=='U'){
 				stepperHoek =315; //rotatie
-				
 			}
 			else if(letter=='W'){
 				stepperHoek =337.5; //rotatie
-				
 			}
 	// ------------------------aanpassen voor armstand---------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if (stepperKlaar == 1){	
 			Motor2.write(80, 30, false);
-			// delay(500);
-			Motor3.write(45, 40, false);
-			// delay(500);
-			Motor4.write(85, 40, false);
-			//delay(500);
+			Motor3.write(45, 30, false);
+			Motor4.write(85, 30, false);
 		}
 	// --------------------------------------------------------------------------------------++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		}
 		else if(cirkel2.indexOf(letter) >= 0){
 			if(letter=='B'){
 				stepperHoek =22.5; //rotatie
-				
 			}
 			else if(letter=='D'){
 				stepperHoek =45; //rotatie
-				
 			}
 			else if(letter=='F'){
 				stepperHoek =67.5; //rotatie
-				
 			}
 			else if(letter=='H'){
 				stepperHoek =112.5; //rotatie
-				
 			}
 			else if(letter=='J'){
 				stepperHoek =135; //rotatie
-				
 			}
 			else if(letter=='L'){
 				stepperHoek =157.5; //rotatie
-							
 			}
 			else if(letter=='N'){
 				stepperHoek =202.5; //rotatie
-				
 			}
 			else if(letter=='P'){
 				stepperHoek =225; //rotatie
-				
 			}
 			else if(letter=='R'){
 				stepperHoek =247.5; //rotatie
-							
 			}
 			else if(letter=='T'){
 				stepperHoek =292.5; //rotatie
-				
 			}
 			else if(letter=='V'){
 				stepperHoek =315; //rotatie
-				
 			}
 			else if(letter=='X'){
 				stepperHoek =337.5; //rotatie
-				
 			}
 // ------------------------aanpassen voor armstand---------------------------------------+++++++++++++++++++++++++++++++++++++++++++++++++++++
 		if (stepperKlaar == 1){
 			Motor3.write(95, 30, false);
-			// delay(500);
 			Motor2.write(45, 30, false);
-			// delay(500);
 			Motor4.write(65, 30, false);
-			//delay(500);
 		}
 // ------------------------------------------
 		}
@@ -566,7 +410,6 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	float hum_sq = HUMERUS * HUMERUS;
 	float uln_sq = ULNA * ULNA;
 	
-
 	x == 0 ? epsilon : x;
 	y == 0 ? epsilon : y;
 	z == 0 ? epsilon : z;
@@ -579,7 +422,6 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 
 	float wrist_y = y - grip_offset_y;
 	float wrist_z = z - grip_offset_z;
-
 
 	float shoulder_y = 0;
 	float shoulder_z = 0;
@@ -617,12 +459,6 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	float ys2 = ym - h*dz/dist;
 	float zs2 = zm + h*dy/dist;
 
-	// Serial.print("Wrist Point : (");
-	// Serial.print(wrist_y);
-	// Serial.print(",");
-	// Serial.print(wrist_z);
-	// Serial.println(")");
-
 	//whichever intersection is more up
 	if (zs1 > zs2) {
 		elbow_z = zs1;
@@ -632,24 +468,10 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 		elbow_z = zs2;
 		elbow_y = ys2;
 	}
-	// Serial.print("Elbow Point : (");
-	// Serial.print(elbow_y);
-	// Serial.print(",");
-	// Serial.print(elbow_z);
-	// Serial.println(")");
 
 	float shoulder_angle_d = degrees( atan2( abs(elbow_z - shoulder_z), abs(elbow_y - shoulder_y) ) );
 	float elbow_angle_d =  -(degrees( atan2( abs(wrist_z - elbow_z), abs(wrist_y - elbow_y) ) ) - shoulder_angle_d );
 	float wrist_angle_d = degrees( atan2(z - wrist_z, y - wrist_y)) - elbow_angle_d - shoulder_angle_d + 180;
-
-	// Serial.print("Angles : ");
-	// Serial.print(base_angle_d);
-	// Serial.print(" ");
-	// Serial.print(shoulder_angle_d);
-	// Serial.print(" ");
-	// Serial.print(elbow_angle_d);
-	// Serial.print(" ");
-	// Serial.println(wrist_angle_d);
 
 	float aantalgraden1 = base_angle_d + 180;  //anti negatives direction fix
 	float aantalgraden2 = shoulder_angle_d;
@@ -657,25 +479,21 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int
 	float aantalgraden4 = mirrorM(180 - wrist_angle_d);	//direction fix	
 
 	stepperHoek = aantalgraden1;
-	
 	Motor2.write(aantalgraden2, servoSpeed);
-	
 	Motor3.write(aantalgraden3, servoSpeed); 
 	delay(500);
 	Motor4.write(aantalgraden4, servoSpeed);
-	
-	 
 	return;
 }
 
-void Robotarm::stepperwrite(int a,int b,int c,int d){
+void Robotarm::stepperwrite(int a,int b,int c,int d){//Functie om de stepper te laten bewegen
 	digitalWrite(pin_stepperA,a);
 	digitalWrite(pin_stepperB,b);
 	digitalWrite(pin_stepperC,c);
 	digitalWrite(pin_stepperD,d);
 }
 
-void Robotarm::moveStepper(int angle){
+void Robotarm::moveStepper(int angle){//functie om de stepper naar een aantal graden te draaien
 	
 // 512 keer deze functie is 360 graden gedraaid
 // stride angle 5.625/64 met een gear ratio van 1:64
@@ -713,9 +531,9 @@ void Robotarm::moveStepper(int angle){
 				// Serial.print("Stepper hoek int: ");
 				// Serial.println(stepperangleInt);
 				break;
-			}
-
-	}else if((hoekverschil(angle) > 0) && (linksRechtsStepper == 0 )){
+		}
+	}
+	else if((hoekverschil(angle) > 0) && (linksRechtsStepper == 0 )){
 	//linksom
 		stepperKlaar = 0;
 		switch(p){
@@ -744,23 +562,25 @@ void Robotarm::moveStepper(int angle){
 				// Serial.print("Stepper hoek int: ");
 				// Serial.println(stepperangleInt);
 				break;
-
-			}
-		}else{
-			//stepperwrite(0,0,0,0);
-			stepperKlaar = 1;
-		} 
+		}
+	}
+	else{
+		//stepperwrite(0,0,0,0);
+		stepperKlaar = 1;
+	} 
 }
 
-int Robotarm::hoekverschil(int angle){
+int Robotarm::hoekverschil(int angle){//Functie om het verschil tussen 2 hoeken te berekenen voor de stepper
 	if(stepperangleInt < angle){
 		linksRechtsStepper = 1; // 1 is rechts 0 is rechts
 		return angle - stepperangleInt ;
 		
-	}else if(stepperangleInt > angle){
+	}
+	else if(stepperangleInt > angle){
 		linksRechtsStepper = 0;
 		return stepperangleInt - angle;  
-	} else if(stepperangleInt == angle){
+	} 
+	else if(stepperangleInt == angle){
 		linksRechtsStepper = 2;
 	}
 }
