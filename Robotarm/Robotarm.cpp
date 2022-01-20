@@ -470,14 +470,14 @@ void Robotarm::circle_method( float x, float y, float z, float grip_angle_d) {
 		elbow_y = ys2;
 	}
 
-	float shoulder_angle_d = degrees( atan2( abs(elbow_z - shoulder_z), abs(elbow_y - shoulder_y) ) );
-	float elbow_angle_d =  -(degrees( atan2( abs(wrist_z - elbow_z), abs(wrist_y - elbow_y) ) ) - shoulder_angle_d );
-	float wrist_angle_d = degrees( atan2(z - wrist_z, y - wrist_y)) - elbow_angle_d - shoulder_angle_d + 180;
+	float shoulder_angle_d = 90 - degrees( atan2( shoulder_z - elbow_z, shoulder_y - elbow_y ) );
+	float elbow_angle_d =  90 - degrees( atan2( elbow_z - wrist_z, elbow_y - wrist_y ) ) + (90 - shoulder_angle_d);
+	float wrist_angle_d = 90 - degrees( atan2( wrist_z - z, wrist_y - y ) ) + (180 - elbow_angle_d - shoulder_angle_d);
 
 	float aantalgraden1 = base_angle_d + 180;  //anti negatives direction fix
 	float aantalgraden2 = shoulder_angle_d;
-	float aantalgraden3 = mirrorM(180 - elbow_angle_d); //diretion fix
-	float aantalgraden4 = mirrorM(180 - wrist_angle_d);	//direction fix	
+	float aantalgraden3 = elbow_angle_d;
+	float aantalgraden4 = wrist_angle_d;	
 
 	stepperHoek = aantalgraden1;
 	Motor2.write(aantalgraden2, servoSpeed);
