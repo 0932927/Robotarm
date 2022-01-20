@@ -399,7 +399,8 @@ void Robotarm::naarPunt(char letter, char cijfer){
 /* arm positioning routine utilizing inverse kinematics */
 /* z is height, y is distance from base center out, x is side to side. y,z can only be positive */
 //void set_arm( uint16_t x, uint16_t y, uint16_t z, uint16_t grip_angle )
-void Robotarm::circle_method( float x, float y, float z, float grip_angle_d, int servoSpeed) {
+void Robotarm::circle_method( float x, float y, float z, float grip_angle_d) {
+	int servoSpeed = 25;
 	int BASE_HGT = 51; //base height
 	int HUMERUS = 122; //shoulder-to-elbow "bone"
 	int ULNA = 125; //elbow-to-wrist "bone"

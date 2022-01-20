@@ -18,7 +18,7 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
   arm.HerstelServos();// Zet de arm terug naar de oorspronkelijke positie
   Serial.println("Ready");
 
-//   arm.circle_method(0, 200, 100, 0, 10);
+//   arm.circle_method(0, 200, 100, 0);
 //  delay(500);
 //  
 //  arm.Cijfer = '2'; // Veranderd het getal tussen de twee haakpunten
@@ -43,9 +43,9 @@ void setup()// Hier worden functies geplaatst die maar één keer worden uitgevo
 //  arm.naarPunt('H','3');
 //  delay(3000);
 //  arm.naarPunt('I','3'); 
-//  arm.circle_method(0, 200, 100, 0, 10);
+//  arm.circle_method(0, 200, 100, 0);
 //  delay(10000);
-//  arm.circle_method(-200, 100, 100, 0, 10);
+//  arm.circle_method(-200, 100, 100, 0);
 //  delay(10000);
 }
 void loop()// Hier worden functies geplaatst die herhaald worden
