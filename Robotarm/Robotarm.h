@@ -13,7 +13,6 @@ class Robotarm {
     public:
         void attach(); // Dit moet aangeroepen worden in void setup()
 		void HerstelServos();
-        void GaNaar(uint8_t, uint8_t);// Deze krijgen we van de Arduino sketch, we beginnen eerst met x en y
         void DraaiMotor1(uint8_t);
         void DraaiMotor2(int);
         void DraaiMotor3(uint8_t);
