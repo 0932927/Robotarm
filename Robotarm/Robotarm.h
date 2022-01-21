@@ -22,7 +22,7 @@ class Robotarm {
 		float mirrorM(float);
 		void dof2Move(float, float);
 		void naarPunt(char, char);
-		void circle_method( float, float, float, float, int);
+		void circle_method( float, float, float, float);
 		void stepperwrite(int a,int b,int c,int d);
 		void moveStepper(int angle);
 		int hoekverschil(int angle);
